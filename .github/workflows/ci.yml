@@ -1,0 +1,36 @@
+# Render the minimal example with the pinned Quarto, apply the offline
+# repairs, and prove in a headless browser that the result works from a
+# plain file tree. This is the check that a Quarto upgrade cannot pass
+# silently: postprocess.py fails loudly when Quarto's output changes,
+# and the smoketest fails when the offline behaviour regresses.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  render-and-smoke:
+    runs-on: ubuntu-latest
+    env:
+      QUARTO_VERSION: "1.9.38"   # move together with the sites' pins
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: ${{ env.QUARTO_VERSION }}
+
+      - name: Render the example with the theme
+        run: |
+          cp -r _extensions examples/minimal/
+          quarto render examples/minimal
+
+      - name: Offline repairs
+        run: python3 offline/postprocess.py examples/minimal/_site
+
+      - name: Smoke test in a headless browser
+        env:
+          QDA_SMOKE_BROWSER: google-chrome
+        run: python3 offline/smoketest.py examples/minimal/_site

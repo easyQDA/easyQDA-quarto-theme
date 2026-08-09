@@ -1,0 +1,33 @@
+---
+title: "Example page"
+---
+
+## A section with math
+
+Chance-corrected agreement is one fraction:
+
+$$
+\kappa = \frac{P_o - P_e}{1 - P_e}
+$$
+
+## A section with code
+
+```python
+frag = qdapy.read_fragments(qdapy.example("zotqda-fragments-demo.csv"))
+```
+
+::: {.callout-note title="A callout"}
+
+Callouts render in Quarto's native style; the theme leaves them alone.
+:::
+
+## A third section
+
+Enough sections for the scroll tracking in the table of contents to have
+something to track.
+
+## A fourth section
+
+The smoketest scrolls this page and checks that the tracking follows,
+that the search index loads without a web server, and that no request
+leaves the page.

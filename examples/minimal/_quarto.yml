@@ -1,0 +1,20 @@
+# Smallest possible site using the theme. CI copies the repository's
+# _extensions/ in here before rendering.
+project:
+  type: website
+
+lang: en
+
+website:
+  title: zotqda-theme example
+  navbar:
+    search: true
+    pinned: true
+  sidebar:
+    style: docked
+    contents:
+      - text: Home
+        href: index.qmd
+
+format:
+  zotqda-theme-html: default

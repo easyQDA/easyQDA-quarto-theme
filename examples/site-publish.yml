@@ -1,0 +1,50 @@
+# Template for a documentation site that uses this theme — not active
+# in this repository. Copy into the site's repo as
+# .github/workflows/publish.yml and adapt the marked spots.
+#
+# The Python setup exists for sites with executable {python} cells (the
+# qdaPy docs). A site without them can drop that block; a site with
+# executable R cells uses r-lib/actions/setup-r and installs its
+# package instead. Sites that commit Quarto's _freeze/ directory can
+# skip the toolchain in CI entirely — at the price that the docs stop
+# failing when the package API breaks.
+name: publish-docs
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      QUARTO_VERSION: "1.9.38"   # keep equal to the build script's pin
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: ${{ env.QUARTO_VERSION }}
+
+      # --- only for sites with executable Python cells ---------------
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install the package the docs execute
+        run: |
+          python3 -m venv ~/docs-venv
+          ~/docs-venv/bin/pip install jupyter .
+          echo "QUARTO_PYTHON=$HOME/docs-venv/bin/python" >> "$GITHUB_ENV"
+      # ---------------------------------------------------------------
+
+      - name: Build
+        run: ./quarto-docs/build.sh          # ADAPT: the site's build script
+
+      - name: Smoke test
+        env:
+          QDA_SMOKE_BROWSER: google-chrome
+        run: |
+          python3 offline/smoketest.py site/en site/de   # ADAPT: paths
+
+      - name: Deploy
+        run: echo "ADAPT: rsync to the host, or actions/deploy-pages"

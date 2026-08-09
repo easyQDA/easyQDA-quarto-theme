@@ -1,0 +1,4 @@
+.DS_Store
+/examples/minimal/_site/
+/examples/minimal/_extensions/
+/examples/minimal/.quarto/
