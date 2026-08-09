@@ -132,6 +132,10 @@ window.addEventListener('load', function () {
     if (notoRequested) {
       report.noto = document.fonts.check('1em "Noto Sans"');
     }
+    /* the magnifier is inserted by script — it is exactly what silently
+       vanishes when a page script dies */
+    var btn = document.querySelector('.aa-DetachedSearchButton');
+    report.searchButton = !!(btn && btn.offsetWidth > 0);
     var finish = function () {
       var d = document.createElement('div');
       d.id = 'zzsmoke';
@@ -193,6 +197,9 @@ def check_site(browser: str, site: Path) -> None:
                              f"{r['searchError'][:120]}")
         if r.get("searchDocs", 1) == 0:
             raise SystemExit(f"smoketest: {rel}: search index is empty")
+        if not r.get("searchButton"):
+            raise SystemExit(f"smoketest: {rel}: the search button never "
+                             "appeared in the navbar")
         if "mjx" in r and r["mjx"] == 0:
             raise SystemExit(f"smoketest: {rel}: MathJax rendered nothing")
         if "noto" in r and not r["noto"]:
