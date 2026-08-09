@@ -75,8 +75,17 @@ def run_probe(browser: str, page: Path, script: str) -> dict:
     flags += ["--dump-dom", "--virtual-time-budget=10000",
               f"file://{tmp_path}"]
     try:
-        out = subprocess.run(flags, capture_output=True, text=True,
-                             timeout=240).stdout
+        # headless browsers occasionally hang on startup; one clean
+        # retry separates that from a page that genuinely never loads
+        for attempt in (1, 2):
+            try:
+                out = subprocess.run(flags, capture_output=True, text=True,
+                                     timeout=90).stdout
+                break
+            except subprocess.TimeoutExpired:
+                if attempt == 2:
+                    raise SystemExit(
+                        f"smoketest: browser hung twice on {page}")
     finally:
         tmp_path.unlink(missing_ok=True)
     m = re.search(r'<div id="zzsmoke">([^<]*)</div>', out)
