@@ -65,6 +65,24 @@ pages in a headless Chromium-family browser over `file://` and checks
 scroll tracking, search, math, fonts and the absence of any CDN
 reference. `QDA_SMOKE_BROWSER` overrides the browser autodetection.
 
+## The documentation as one PDF
+
+`print/make_pdf.py` renders a language project as a single PDF: the
+chapter order is the sidebar order (so the PDF cannot fall behind a
+page), the engine is Typst (bundled with Quarto — no TeX toolchain),
+Noto Sans is embedded from `print/fonts/`, the table of contents and
+the citations are linked, and one bibliography sits at the end.
+
+```sh
+python3 print/make_pdf.py mysite/en mysite/_site/docs.pdf
+```
+
+Give the site a navbar icon pointing at the file
+(`icon: file-pdf`, `href: docs.pdf` — Quarto adjusts the relative
+path per page) and call the script from the site's build; the zotQDA
+sites do both. One quirk is codified in the script: Quarto's Typst
+book cover requires an author and fails without one.
+
 ## Pin your Quarto version
 
 Both the styling rules and the offline repairs are written against a
@@ -84,6 +102,7 @@ own publish workflow.
 - `offline/postprocess.py` — the three offline repairs, loud on drift
 - `offline/smoketest.py` — the headless-browser proof
 - `offline/mathjax/` — vendored MathJax (Apache 2.0)
+- `print/` — the one-PDF builder and the Noto Sans TTFs it embeds
 - `examples/minimal/` — the site the CI renders and smokes
 
 ## Maintenance notes
