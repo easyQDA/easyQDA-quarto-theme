@@ -1,0 +1,73 @@
+---
+title: "Offline-Fähigkeit"
+---
+
+
+Eine mit Quarto gebaute Site geht davon aus, über http ausgeliefert zu
+werden. Öffnet man sie aus einem einfachen Dateibaum — Doppelklick auf
+eine `index.html`, oder als Hilfe in einem Zotero-Plugin unter einer
+`chrome://`-Adresse — sterben drei Dinge leise: die Interaktivität, die
+Suche, die Formeln. `offline/postprocess.py` repariert alle drei nach
+dem `quarto render`:
+
+```sh
+quarto render meinesite
+python3 offline/postprocess.py meinesite/_site
+```
+
+## Die drei Reparaturen
+
+**quarto.js ist ein ES-Modul.** Browser verweigern Modul-Importe über
+`file://`, und mit ihnen stirbt alles, was das Skript antreibt:
+Tabsets, der Scrollspy in der rechten Spalte, der Dunkelmodus-Schalter.
+Die Reparatur schreibt das Skript in ein klassisches deferred Script
+um.
+
+**Die Suche lädt ihren Index nach.** Das Suchfeld holt `search.json`
+per `fetch()`, was `file://` verbietet. Die Reparatur wandelt den Index
+in ein klassisches Skript (`search-index.js`) mit denselben Daten und
+bringt der Suche bei, es immer dann zu verwenden, wenn das Protokoll
+nicht http(s) ist — das deckt `file://` und `chrome://` gleichermaßen
+ab. Die Suche läuft vollständig in der Seite; nichts wird irgendwohin
+gesendet, offline wie online.
+
+**Formeln kommen von einem CDN.** Seiten mit Formeln verweisen auf
+MathJax auf einem CDN. Die Reparatur biegt sie auf die in
+`offline/mathjax/` beigelegte Kopie um, mit je Seitentiefe angepasstem
+relativem Pfad. Der Beweis, live auf dieser Seite — wenn Sie sie aus
+einem Dateibaum lesen, wurde das hier ohne jedes Netz gerendert:
+
+$$\alpha \;=\; 1 - \frac{D_o}{D_e}$$
+
+Nach den drei Reparaturen fegt der Postprozessor über jede Seite und
+**lässt den Build scheitern, wenn irgendein Verweis auf einen fremden
+Host übrig ist** — Schriften, Skripte, Stylesheets, gleich was.
+„Offline-fähig" wird behauptet und belegt, nicht gehofft.
+
+## Laut bei Drift
+
+Jede Reparatur passt auf exakte Zeichenketten in Quartos Ausgabe.
+Ändert ein Quarto-Update diese Ausgabe, **scheitert der Build**, statt
+eine Site auszuliefern, die nur für Offline-Leser kaputt ist — die Art
+Regression, die in einem Online-Deployment niemand bemerkt. Genau
+deshalb [nagelt das Theme seine Quarto-Version fest](../dev/wartung.qmd).
+
+## Der Beweis: ein Headless-Browser-Smoketest
+
+Reparaturen, die „funktionieren müssten", sind nicht dasselbe wie
+Reparaturen, die funktionieren. `offline/smoketest.py` lädt echte
+Seiten der gebauten Site in einem headless laufenden Browser der
+Chromium-Familie **über `file://`** und prüft je Seite: Der Scrollspy
+hebt tatsächlich den angescrollten Abschnitt hervor, der Suchknopf
+existiert und sein Index ist geladen, MathJax hat seine Formeln
+gerendert, Noto Sans ist angekommen, und kein CDN-Verweis hat
+überlebt.
+
+```sh
+python3 offline/smoketest.py meinesite/_site     # oder: site/en site/de
+```
+
+Er erkennt einen installierten Browser der Chromium-Familie selbst;
+`QDA_SMOKE_BROWSER` übersteuert die Wahl (die CI setzt
+`google-chrome`). Lassen Sie ihn nach jedem Build laufen — die
+zotQDA-Sites tun das in der CI bei jedem Push.

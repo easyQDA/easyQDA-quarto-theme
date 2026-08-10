@@ -1,0 +1,62 @@
+---
+title: "Wartung und Quarto-Pin"
+---
+
+
+## Warum es überhaupt einen Pin gibt
+
+Die Regeln des Themes zielen auf Quartos HTML-Klassen
+(`.sidebar-item-text`, `#toc-title`, `.quarto-color-scheme-toggle`, …),
+und die Offline-Reparaturen passen auf exakte Zeichenketten in Quartos
+erzeugter Ausgabe. Beides ist in der Praxis stabil, beides ist kein
+dokumentierter Vertrag. Die ehrliche Konsequenz: Das Theme ist gegen
+eine konkrete Quarto-Version geschrieben — derzeit **1.9.38** — und
+alles stromabwärts nagelt sie fest: die CI dieses Repositoriums, die
+Build-Skripte von qdaPy und qdaR, deren CI-Workflows.
+
+Die Fehlerbilder sind asymmetrisch, und darauf stützt sich der Entwurf.
+Eine Gestaltungsregel, die nicht mehr greift, fällt sichtbar aus —
+jemand sieht es. Eine Offline-Reparatur, die nicht mehr greift, fällt
+**online unsichtbar** aus: Die Site funktioniert über http und bricht
+nur aus dem Dateibaum, den niemand routinemäßig öffnet. Deshalb lässt
+`postprocess.py` den Build bei Drift scheitern, statt eine nicht mehr
+erkannte Reparatur zu überspringen.
+
+## Quarto aktualisieren, mit Bedacht
+
+1. Einmal ausdrücklich mit der neuen Version bauen:
+   `ALLOW_UNPINNED_QUARTO=1 ./docs/build.sh`
+2. Scheitert `postprocess.py` laut, hat sich Quartos Ausgabe geändert —
+   zuerst die Reparatur an die neue Ausgabe anpassen.
+3. Den Smoketest laufen lassen; er muss für jede geprüfte Seite grün
+   sein.
+4. Eine Seite mit eigenen Augen ansehen: Kopfzeile, Pillen, Schalter,
+   eine Formel, die Suche.
+5. Den Pin weiterschieben — hier (CI-Workflow und `docs/build.sh`),
+   dann in den Nutzer-Repositorien (deren `build.sh` und Workflows),
+   und über deren `update-theme.sh` neu vendoren.
+
+## Eine Theme-Version veröffentlichen
+
+Die Version lebt in `_extensions/zotqda-theme/_extension.yml`. Jede
+substanzielle Änderung erhöht sie — die vendorten Kopien der Nutzer und
+der [Versions-Umschalter](../guide/versionen.qmd) dieser Site hängen an
+Releases, zwei verschiedene Stände des Themes dürfen sich also nie eine
+Nummer teilen.
+
+1. `version:` in der `_extension.yml` erhöhen.
+2. `python scripts/gen_versions.py` — trägt sie in `versions.json` ein.
+3. Committen, `v<version>` taggen, pushen; das Deploy veröffentlicht
+   diese Site unter dem neuen Versionsverzeichnis.
+4. In qdaPy und qdaR: `./docs/update-theme.sh`, neu bauen, committen.
+
+## Die Übersteuerungen mit Gewicht
+
+Einige Regeln nutzen `!important` oder erhöhte Spezifität, jede in
+`zotqda.scss` an Ort und Stelle kommentiert: Quarto nagelt die Breite
+der Seitenleisten-Einträge fest (die Pille braucht
+`width: calc(100% + …)` plus `flex-shrink: 0`), und die Zustandsregeln
+des Farbschema-Schalters wiegen schwerer als die Basisregel (der
+Glyphentausch muss `background-image` in beiden Zustandsregeln
+löschen). Dort schaut man zuerst, wenn ein Upgrade Seitenleiste oder
+Schalter verändert.

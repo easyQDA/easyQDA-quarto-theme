@@ -1,0 +1,57 @@
+---
+title: "Maintenance and the Quarto pin"
+---
+
+
+## Why there is a pin at all
+
+The theme's rules target Quarto's HTML classes
+(`.sidebar-item-text`, `#toc-title`, `.quarto-color-scheme-toggle`, …),
+and the offline repairs match exact strings in Quarto's generated
+output. Both are stable in practice, neither is a documented contract.
+The honest consequence: the theme is written against a concrete Quarto
+version — currently **1.9.38** — and everything downstream pins it:
+this repository's CI, the qdaPy and qdaR build scripts, their CI
+workflows.
+
+The failure modes are asymmetric, and the design leans on that.
+A styling rule that stops matching degrades visibly — someone sees it.
+An offline repair that stops matching degrades **invisibly online**:
+the site works over http and breaks only from a file tree, which
+nobody routinely opens. That is why `postprocess.py` fails the build
+on drift instead of skipping a repair it no longer recognises.
+
+## Upgrading Quarto, deliberately
+
+1. Build with the new version once, explicitly:
+   `ALLOW_UNPINNED_QUARTO=1 ./docs/build.sh`
+2. If `postprocess.py` fails loudly, Quarto's output changed — adjust
+   the repair to the new output first.
+3. Run the smoketest; it must be green for every page it samples.
+4. Eyeball one page: header, pills, toggle, a formula, search.
+5. Move the pin — here (CI workflow and `docs/build.sh`), then in the
+   consumer repositories (their `build.sh` and workflows), and
+   re-vendor via their `update-theme.sh`.
+
+## Releasing a theme version
+
+The version lives in `_extensions/zotqda-theme/_extension.yml`. Every
+substantial change bumps it — the consumers' vendored copies and this
+site's [version switcher](../guide/versions.qmd) both key off releases,
+so two different states of the theme must never share a number.
+
+1. Bump `version:` in `_extension.yml`.
+2. `python scripts/gen_versions.py` — records it in `versions.json`.
+3. Commit, tag `v<version>`, push; the deploy publishes this site
+   under the new version directory.
+4. In qdaPy and qdaR: `./docs/update-theme.sh`, rebuild, commit.
+
+## The overrides that carry weight
+
+A few rules use `!important` or raised specificity, each commented in
+`zotqda.scss` at the spot: Quarto pins the sidebar item width
+(the pill needs `width: calc(100% + …)` plus `flex-shrink: 0`), and
+the color-scheme toggle's state rules outrank the base rule (the
+glyph swap must clear `background-image` inside both state rules).
+They are the places to look first when an upgrade changes sidebar or
+toggle behaviour.

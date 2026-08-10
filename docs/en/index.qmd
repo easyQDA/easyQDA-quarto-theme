@@ -1,0 +1,54 @@
+---
+title: "zotqda-quarto-theme"
+---
+
+
+A Quarto website theme with one distinctive property: the built site
+keeps working when it is opened from a plain file tree — `file://`, or
+the `chrome://` address of help bundled into a Zotero plugin. Search,
+math, the table of contents that follows the scroll, the dark-mode
+toggle: all of it, with **no request ever leaving the page**. Fonts and
+MathJax ship with the site.
+
+The look is what you are reading right now: a centred three-column
+layout with a frosted-glass header, self-hosted Noto Sans, quiet
+sidebars with a soft accent pill on the current page, and Quarto's
+native callouts, in light and dark. This documentation is built with
+the theme it documents — every claim on these pages is tested by the
+page you see it on.
+
+The theme was built for the [zotQDA](https://zotqda.org) documentation
+sites — [qdaPy](https://qdapy.zotqda.org) and
+[qdaR](https://qdar.zotqda.org) use it, and this site does too. It is
+generic enough for any documentation site with the same needs.
+
+```sh
+quarto add fre-ms/zotqda-quarto-theme
+```
+
+```yaml
+format:
+  zotqda-theme-html: default
+```
+
+## Where to go from here
+
+| If you want to | Read |
+|---|---|
+| set up a site with the theme | [Getting started](guide/getting-started.qmd) |
+| see what the theme changes, and why | [The look](guide/look.qmd) |
+| ship a site that works from a file tree | [Working offline](guide/offline.qmd) |
+| build the same site in two languages | [Multilingual sites](guide/multilingual.qmd) |
+| offer the whole documentation as one PDF | [The docs as one PDF](guide/pdf.qmd) |
+| publish releases that never break a link | [Versioned sites](guide/versions.qmd) |
+| change colours, fonts or the logo | [Customising](guide/customising.qmd) |
+| understand or change the theme itself | [Repository layout](dev/layout.qmd) |
+| upgrade Quarto without breaking things | [Maintenance and the Quarto pin](dev/maintenance.qmd) |
+
+## What the theme does not do
+
+It does not try to style arbitrary Quarto documents — it is a website
+theme, written against the HTML that Quarto's website projects produce.
+And it does not promise that any Quarto version will do: both the
+styling rules and the offline repairs are written against a pinned
+version, and the pin moves deliberately, with a test, not silently.

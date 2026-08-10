@@ -1,0 +1,63 @@
+---
+title: "Versioned sites"
+---
+
+
+A published link should keep meaning what it meant when somebody set
+it. The deployment layout the zotQDA sites use — and that this theme
+supports with two small pieces — makes that a property of the file
+system, not a promise:
+
+```
+example.org/
+├── index.html      ← bare-address shortcut, forwards to latest/
+├── versions.json   ← the list the version switcher reads
+├── 0.1.0/          ← one directory per release, never touched again
+├── 0.2.0/
+└── latest/         ← a second copy of the newest release
+```
+
+Every release is uploaded into its own directory and never modified
+afterwards; `latest/` follows the newest release only. Rebuilding the
+documentation of an older release refreshes its own directory and
+leaves `latest/` alone.
+
+## versions.json and gen_versions.py
+
+`versions.json` sits at the site root, one directory above the version
+directories. `scripts/gen_versions.py` maintains it from the one place
+the version already lives — `manifest.json`, `src/*/_version.py`, a
+`DESCRIPTION` file or an `_extensions/*/_extension.yml`, whichever the
+repository has:
+
+```sh
+python scripts/gen_versions.py            # add the current version
+python scripts/gen_versions.py --current  # just print it (the deploy asks here)
+```
+
+Adding a version is a change to a committed file, deliberately: a
+release that quietly appeared in the switcher and nowhere else would
+be hard to account for later.
+
+## The version banner
+
+`shared/versions.js` — inlined into every page by
+[gen_langmap.py](multilingual.qmd) — adds the three things that make
+the layout usable: a note saying which version you are reading, a menu
+to reach the same page in another version, and a warning when the
+version is not the current release. Legal pages are retargeted to the
+newest version, so an outdated Impressum can never be the one a
+visitor lands on.
+
+Everything is conditional on the address actually carrying a version
+segment. In help bundled into a plugin, or in a plain file tree, the
+banner does nothing at all — which is correct: that copy belongs to
+the release it shipped with.
+
+## The deploy that fits this layout
+
+`examples/site-publish.yml` sketches the workflow; the qdaPy and qdaR
+repositories carry the full version in production (`docs.yml`: build,
+smoketest, then an SFTP mirror **into the version directory only**,
+with the host key pinned and a guard that refuses to operate on an
+account root). This site deploys the same way.

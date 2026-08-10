@@ -1,0 +1,80 @@
+# One website project per language; the sidebars of en and de must stay
+# parallel — gen_langmap.py derives the switcher's page map from them.
+project:
+  type: website
+  output-dir: ../../site/de
+  resources:
+    - fonts/
+
+lang: de
+
+website:
+  title: zotQDA Theme
+  site-url: https://theme.zotqda.org/latest/de/
+  repo-url: https://github.com/fre-ms/zotqda-quarto-theme
+  navbar:
+    search: true
+    pinned: true
+    right:
+      # Language menu behind the translate icon; langmap.js retargets
+      # the entries to the translation of the current page.
+      # The whole documentation as one linked PDF, built by
+      # print/make_pdf.py during the site build.
+      - icon: file-pdf
+        aria-label: PDF
+        href: zotqda-theme-Dokumentation.pdf
+      - icon: translate
+        aria-label: Sprache
+        menu:
+          - text: English
+            href: ../en/index.html
+          - text: Deutsch
+            href: ../de/index.html
+      # The theme moves this item over the right sidebar.
+      - icon: github
+        text: GitHub
+        href: https://github.com/fre-ms/zotqda-quarto-theme
+  sidebar:
+    style: docked
+    collapse-level: 3
+    contents:
+      - text: Start
+        href: index.qmd
+      - section: Das Theme nutzen
+        contents:
+          - text: Erste Schritte
+            href: guide/erste-schritte.qmd
+          - text: Die Gestaltung
+            href: guide/gestaltung.qmd
+          - text: Offline-Fähigkeit
+            href: guide/offline.qmd
+          - text: Mehrsprachige Sites
+            href: guide/mehrsprachig.qmd
+          - text: Die Doku als ein PDF
+            href: guide/pdf.qmd
+          - text: Versionierte Sites
+            href: guide/versionen.qmd
+          - text: Anpassen
+            href: guide/anpassen.qmd
+      - section: Für Entwickler
+        contents:
+          - text: Aufbau des Repositoriums
+            href: dev/aufbau.qmd
+          - text: Wartung und Quarto-Pin
+            href: dev/wartung.qmd
+      - text: Lizenz
+        href: lizenz.qmd
+      - text: Impressum
+        href: impressum.qmd
+      - text: Datenschutz
+        href: datenschutz.qmd
+  page-footer:
+    center: >-
+      © fre.ms — MIT-Lizenz —
+      [Impressum](https://theme.zotqda.org/latest/de/impressum.html) ·
+      [Datenschutz](https://theme.zotqda.org/latest/de/datenschutz.html)
+
+format:
+  zotqda-theme-html:
+    css: fonts/noto.css
+    include-after-body: theme/scripts.html

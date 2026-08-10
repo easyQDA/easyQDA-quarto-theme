@@ -1,0 +1,59 @@
+---
+title: "Die Doku als ein PDF"
+---
+
+
+`print/make_pdf.py` rendert ein Sprachprojekt als ein einziges,
+verlinktes PDF — die Datei hinter dem PDF-Symbol im Kopf dieser Site:
+
+```sh
+python3 print/make_pdf.py docs/de site/de/Dokumentation.pdf
+```
+
+## Was es tut, und warum so
+
+**Die Kapitelfolge ist die Seitenleisten-Folge.** Das Skript liest die
+`_quarto.yml` des Projekts, nimmt die Seiten der Seitenleiste in ihrer
+Reihenfolge und setzt daraus ein temporäres Quarto-Buch zusammen. Es
+gibt keine zweite Kapitelliste zu pflegen, das PDF kann also keiner
+hinzugefügten Seite hinterherhinken — dasselbe Prinzip wie bei der
+[Sprachkarte](mehrsprachig.qmd).
+
+**Die Engine ist Typst**, die in Quarto steckt — keine
+TeX-Installation, weder auf Ihrem Rechner noch in der CI. Das
+Inhaltsverzeichnis und die Zitate sind klickbare Verweise, und nutzt
+die Site eine Bibliografie, werden die Literaturlisten der Einzelseiten
+entfernt und eine Bibliografie steht am Ende des Buches.
+
+**Noto Sans wird eingebettet**, aus `print/fonts/` — das PDF passt zur
+Site und sieht überall gleich aus.
+
+Eine Quarto-Eigenheit steht im Skript statt in Ihrem Gedächtnis: Die
+Typst-Buchvorlage verlangt einen `author` und scheitert ohne ihn mit
+einer kryptischen Meldung — das Skript setzt ihn immer.
+
+## In eine Site einbauen
+
+Geben Sie der Navigationsleiste ein Symbol, das auf die Datei zeigt;
+Quarto passt den relativen Pfad auf jeder Seite an:
+
+```yaml
+navbar:
+  right:
+    - icon: file-pdf
+      aria-label: PDF
+      href: Dokumentation.pdf
+```
+
+und rufen Sie das Skript in Ihrem Build nach dem Site-Render auf,
+einmal je Sprache:
+
+```sh
+python3 print/make_pdf.py docs/en site/en/docs.pdf
+python3 print/make_pdf.py docs/de site/de/Dokumentation.pdf
+```
+
+Das PDF wird mit der Site gebaut und ist damit immer derselbe Stand wie
+die Seiten drumherum — in einem [versionierten
+Deployment](versionen.qmd) behält jedes Versionsverzeichnis das PDF,
+das zu ihm gehört.

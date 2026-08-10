@@ -1,0 +1,64 @@
+---
+title: "Versionierte Sites"
+---
+
+
+Ein veröffentlichter Link soll bedeuten bleiben, was er bedeutete, als
+ihn jemand gesetzt hat. Das Auslieferungs-Layout der zotQDA-Sites — vom
+Theme mit zwei kleinen Bausteinen unterstützt — macht das zu einer
+Eigenschaft des Dateisystems statt zu einem Versprechen:
+
+```
+example.org/
+├── index.html      ← Abkürzung der nackten Adresse, leitet nach latest/
+├── versions.json   ← die Liste, aus der der Versions-Umschalter liest
+├── 0.1.0/          ← ein Verzeichnis je Release, nie wieder angefasst
+├── 0.2.0/
+└── latest/         ← eine zweite Kopie des neuesten Release
+```
+
+Jedes Release wird in sein eigenes Verzeichnis hochgeladen und danach
+nie verändert; `latest/` folgt allein dem neuesten Release. Wer die
+Doku eines älteren Release neu baut, erneuert dessen Verzeichnis und
+lässt `latest/` in Ruhe.
+
+## versions.json und gen_versions.py
+
+`versions.json` liegt an der Site-Wurzel, ein Verzeichnis über den
+Versionsverzeichnissen. `scripts/gen_versions.py` pflegt sie aus der
+einen Stelle, an der die Version ohnehin lebt — `manifest.json`,
+`src/*/_version.py`, eine `DESCRIPTION` oder eine
+`_extensions/*/_extension.yml`, je nachdem, was das Repositorium hat:
+
+```sh
+python scripts/gen_versions.py            # aktuelle Version eintragen
+python scripts/gen_versions.py --current  # nur ausgeben (das Deploy fragt hier)
+```
+
+Dass eine neue Version eine Änderung an einer committeten Datei ist,
+ist Absicht: Ein Release, das still im Umschalter auftauchte und sonst
+nirgends, wäre später schwer zu erklären.
+
+## Der Versionsbanner
+
+`shared/versions.js` — von [gen_langmap.py](mehrsprachig.qmd) in jede
+Seite eingebettet — ergänzt die drei Dinge, die das Layout benutzbar
+machen: einen Hinweis, welche Version Sie gerade lesen, ein Menü zur
+selben Seite in einer anderen Version, und eine Warnung, wenn die
+Version nicht das aktuelle Release ist. Rechtsseiten werden auf die
+neueste Version umgebogen — ein veraltetes Impressum kann so nie das
+sein, auf dem ein Besucher landet.
+
+Alles ist daran geknüpft, dass die Adresse tatsächlich ein
+Versionssegment trägt. In der einem Plugin beigelegten Hilfe oder im
+einfachen Dateibaum tut der Banner gar nichts — und das ist richtig so:
+Diese Kopie gehört zu dem Release, mit dem sie ausgeliefert wurde.
+
+## Das passende Deploy
+
+`examples/site-publish.yml` skizziert den Workflow; die Repositorien
+von qdaPy und qdaR führen die Vollversion im Produktivbetrieb
+(`docs.yml`: bauen, Smoketest, dann ein SFTP-Spiegel **nur in das
+Versionsverzeichnis**, mit festgenageltem Hostschlüssel und einer
+Sperre, die sich weigert, auf einer Account-Wurzel zu arbeiten). Diese
+Site wird genauso ausgeliefert.

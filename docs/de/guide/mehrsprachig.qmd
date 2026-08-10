@@ -1,0 +1,62 @@
+---
+title: "Mehrsprachige Sites"
+---
+
+
+Die Antwort des Themes auf „dieselbe Site in zwei Sprachen" ist bewusst
+unspektakulär: **ein Quarto-Website-Projekt je Sprache**, `en/` und
+`de/`, gerendert nach `site/en/` und `site/de/`. Kein
+i18n-Rahmenwerk, keine Paarung über Front-Matter je Seite — nur zwei
+Projekte, deren Seitenleisten dieselben Seiten in derselben Reihenfolge
+führen.
+
+Diese Parallelität ist keine Konvention, die man sich merken muss; sie
+wird geprüft. Diese Site ist genau so gebaut, ebenso die von qdaPy und
+qdaR.
+
+## Das Sprachmenü
+
+Die Navigationsleiste jedes Projekts trägt das Übersetzungssymbol mit
+einem Eintrag je Sprache:
+
+```yaml
+- icon: translate
+  aria-label: Sprache
+  menu:
+    - text: English
+      href: ../en/index.html
+    - text: Deutsch
+      href: ../de/index.html
+```
+
+Von Haus aus zeigen diese Einträge auf die Startseite der jeweils
+anderen Sprache. Die unten erzeugte Karte biegt sie auf **die
+Übersetzung der gerade gelesenen Seite** um.
+
+## gen_langmap.py
+
+`docs/gen_langmap.py` läuft die beiden Seitenleisten parallel ab und
+schreibt die Seite-zu-Seite-Karte, die Umbiegelogik und den
+Versionsbanner als `theme/scripts.html` in beide Projekte, die es in
+jede Seite einbetten (`include-after-body` kennt die Seitentiefe nicht,
+ein relatives `<script src>` funktionierte also nur von der
+Site-Wurzel — das Einbetten umgeht das).
+
+Die Karte aus den Seitenleisten abzuleiten heißt: Sie kann keiner
+hinzugefügten Seite hinterherhinken. Der Preis ist die Regel, die die
+Prüfung erzwingt: **eine Seite kommt in beide Seitenleisten oder in
+keine** — hören die beiden auf, parallel zu sein, scheitert der Build
+mit einer Meldung, die das sagt, statt dass ein Umschalter Leser still
+auf die falsche Seite schickt.
+
+Die Schlüssel der Karte sind relativ zur Site-Wurzel
+(`en/guide/offline.html` ↔ `de/guide/offline.html`), dieselbe Datei
+funktioniert also über http und aus dem einfachen Dateibaum.
+
+## Die Sprachwahl an der Wurzel
+
+Über den beiden Sprachverzeichnissen sitzt eine kleine `index.html`,
+die Besucher zur Browsersprache weiterleitet und ohne JavaScript zwei
+schlichte Verweise zeigt — dort bleiben auch die Rechtsseiten
+erreichbar. `docs-root/index.html` in diesem Repositorium ist die
+Kopie, die diese Site ausliefert; nehmen Sie sie als Vorlage.

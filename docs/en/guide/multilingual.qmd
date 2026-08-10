@@ -1,0 +1,59 @@
+---
+title: "Multilingual sites"
+---
+
+
+The theme's answer to "the same site in two languages" is deliberately
+boring: **one Quarto website project per language**, `en/` and `de/`,
+rendered into `site/en/` and `site/de/`. No i18n framework, no
+per-page front-matter pairing — just two projects whose sidebars list
+the same pages in the same order.
+
+That parallelism is not a convention to remember; it is checked. This
+site is built exactly this way, as are qdaPy's and qdaR's.
+
+## The language menu
+
+Each project's navbar carries the translate icon with one entry per
+language:
+
+```yaml
+- icon: translate
+  aria-label: Language
+  menu:
+    - text: English
+      href: ../en/index.html
+    - text: Deutsch
+      href: ../de/index.html
+```
+
+Out of the box those entries point at the other language's front page.
+The generated map below retargets them to **the translation of the
+page being read**.
+
+## gen_langmap.py
+
+`docs/gen_langmap.py` walks the two sidebars in parallel and writes the
+page-to-page map, the retargeting logic and the version banner as
+`theme/scripts.html` into both projects, which inline it into every
+page (`include-after-body` is depth-blind, so a relative
+`<script src>` would only work from the site root — inlining sidesteps
+that).
+
+Deriving the map from the sidebars means it cannot fall behind a page
+that was added. The cost is the rule the check enforces: **add a page
+to both sidebars or to neither** — if the two sidebars stop being
+parallel, the build fails with a message saying so, not a switcher
+that silently sends readers to the wrong page.
+
+The map's keys are site-root-relative (`en/guide/offline.html` ↔
+`de/guide/offline.html`), so the same file works over http and from a
+plain file tree.
+
+## The language chooser at the root
+
+Above the two language directories sits a small `index.html` that
+forwards visitors to their browser language and shows two plain links
+when JavaScript is off — which is also where the legal pages stay
+reachable. `docs-root/index.html` in this repository is the copy this
+site deploys; take it as a template.

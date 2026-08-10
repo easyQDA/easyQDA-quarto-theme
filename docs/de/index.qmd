@@ -1,0 +1,58 @@
+---
+title: "zotqda-quarto-theme"
+---
+
+
+Ein Quarto-Website-Theme mit einer besonderen Eigenschaft: Die gebaute
+Site funktioniert auch dann, wenn sie aus einem einfachen Dateibaum
+geöffnet wird — über `file://` oder unter der `chrome://`-Adresse einer
+Hilfe, die einem Zotero-Plugin beiliegt. Suche, Formeln, das
+Inhaltsverzeichnis, das dem Scrollen folgt, der Dunkelmodus-Schalter:
+alles, und **keine Anfrage verlässt je die Seite**. Schriften und
+MathJax liegen der Site bei.
+
+Die Gestaltung ist das, was Sie gerade lesen: ein zentriertes
+dreispaltiges Layout mit Milchglas-Kopfzeile, selbst gehostete Noto
+Sans, ruhige Seitenleisten mit einer sanften Akzent-Pille auf der
+aktuellen Seite und Quartos native Callouts, hell und dunkel. Diese
+Dokumentation ist mit dem Theme gebaut, das sie beschreibt — jede
+Behauptung auf diesen Seiten wird von der Seite geprüft, auf der sie
+steht.
+
+Entstanden ist das Theme für die Dokumentations-Sites von
+[zotQDA](https://zotqda.org) — [qdaPy](https://qdapy.zotqda.org) und
+[qdaR](https://qdar.zotqda.org) nutzen es, ebenso diese Site. Es ist
+allgemein genug für jede Dokumentations-Site mit denselben
+Bedürfnissen.
+
+```sh
+quarto add fre-ms/zotqda-quarto-theme
+```
+
+```yaml
+format:
+  zotqda-theme-html: default
+```
+
+## Wie es weitergeht
+
+| Wenn Sie … möchten | Lesen Sie |
+|---|---|
+| eine Site mit dem Theme aufsetzen | [Erste Schritte](guide/erste-schritte.qmd) |
+| sehen, was das Theme ändert — und warum | [Die Gestaltung](guide/gestaltung.qmd) |
+| eine Site ausliefern, die aus dem Dateibaum läuft | [Offline-Fähigkeit](guide/offline.qmd) |
+| dieselbe Site in zwei Sprachen bauen | [Mehrsprachige Sites](guide/mehrsprachig.qmd) |
+| die ganze Dokumentation als ein PDF anbieten | [Die Doku als ein PDF](guide/pdf.qmd) |
+| Releases veröffentlichen, die keinen Link brechen | [Versionierte Sites](guide/versionen.qmd) |
+| Farben, Schriften oder das Logo ändern | [Anpassen](guide/anpassen.qmd) |
+| das Theme selbst verstehen oder verändern | [Aufbau des Repositoriums](dev/aufbau.qmd) |
+| Quarto aktualisieren, ohne etwas zu brechen | [Wartung und Quarto-Pin](dev/wartung.qmd) |
+
+## Was das Theme nicht tut
+
+Es versucht nicht, beliebige Quarto-Dokumente zu gestalten — es ist
+ein Website-Theme, geschrieben gegen das HTML, das Quartos
+Website-Projekte erzeugen. Und es verspricht nicht, dass jede
+Quarto-Version taugt: Gestaltungsregeln wie Offline-Reparaturen sind
+gegen eine festgenagelte Version geschrieben, und der Pin wandert
+bewusst und mit Prüfung weiter, nicht stillschweigend.

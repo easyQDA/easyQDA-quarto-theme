@@ -1,0 +1,58 @@
+---
+title: "The docs as one PDF"
+---
+
+
+`print/make_pdf.py` renders a language project as a single linked PDF —
+the file behind the PDF icon in this site's header:
+
+```sh
+python3 print/make_pdf.py docs/en site/en/docs.pdf
+```
+
+## What it does, and why this way
+
+**The chapter order is the sidebar order.** The script reads the
+project's `_quarto.yml`, takes the sidebar's pages in sequence and
+assembles a temporary Quarto book from them. There is no second list
+of chapters to maintain, so the PDF cannot fall behind a page that was
+added — the same principle as the
+[language map](multilingual.qmd).
+
+**The engine is Typst**, which ships inside Quarto — no TeX toolchain
+to install, on your machine or in CI. The table of contents and the
+citations are clickable links, and if the site uses a bibliography,
+per-page reference lists are stripped and one bibliography sits at the
+end of the book.
+
+**Noto Sans is embedded** from `print/fonts/`, so the PDF matches the
+site and renders the same everywhere.
+
+One Quarto quirk is codified in the script rather than in your memory:
+the Typst book template requires an `author` and fails with a cryptic
+error without one — the script always sets it.
+
+## Wiring it into a site
+
+Give the navbar an icon pointing at the file; Quarto adjusts the
+relative path on every page:
+
+```yaml
+navbar:
+  right:
+    - icon: file-pdf
+      aria-label: PDF
+      href: docs.pdf
+```
+
+and call the script from your build after the site render, once per
+language:
+
+```sh
+python3 print/make_pdf.py docs/en site/en/docs.pdf
+python3 print/make_pdf.py docs/de site/de/Dokumentation.pdf
+```
+
+The PDF is rebuilt with the site, so it is always the same release as
+the pages around it — under a [versioned deployment](versions.qmd),
+every version directory keeps the PDF that belongs to it.

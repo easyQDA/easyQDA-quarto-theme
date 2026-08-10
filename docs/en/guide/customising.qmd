@@ -1,0 +1,75 @@
+---
+title: "Customising"
+---
+
+
+The theme is split so that the common case — same structure, different
+colours — touches one small file and nothing else.
+
+## Where things live
+
+```
+_extensions/zotqda-theme/
+├── _extension.yml       the format: theme pair, highlight pair, defaults
+├── zotqda.scss          shared defaults and ALL rules
+├── zotqda-light.scss    light palette — colours only
+└── zotqda-dark.scss     dark palette — colours only
+```
+
+`zotqda.scss` carries every structural rule (header, grid, sidebars,
+pills, callouts) written against SCSS variables with `!default`
+values. The palette files override those variables and contribute no
+rules. Order matters and is codified in `_extension.yml`: in Quarto's
+theme lists, **later files win the defaults**, so the palettes come
+after the shared file.
+
+## Your own colours
+
+Edit the palette files, or add your own pair next to them and point
+`_extension.yml` at it. The variables a palette actually sets, with
+the light values as they ship:
+
+```scss
+$zq-accent:     #3f51b5;   // indigo — active markers, links
+$zq-accent-ink: #3547a8;   // slightly deeper, for links on white
+$zq-ink:        #212630;   // body text
+$zq-muted:      #5d6572;   // sidebars, footer
+$zq-surface:    #f5f6f8;   // code blocks, banners
+$zq-border:     #e5e7eb;
+$zq-navbar-bg:  #ffffff;   // frosted header (80% opacity applied)
+$zq-pill:       rgba(63, 81, 181, 0.10);  // the active-page pill
+```
+
+The palettes also map a handful of Quarto/Bootstrap variables
+(`$body-bg`, `$link-color`, `$code-bg`, …) onto those. Everything else
+falls back to the shared defaults in `zotqda.scss`.
+
+## Your logo instead of the book
+
+The open-book glyph before the site title is a placeholder, drawn as a
+Bootstrap-icon glyph in CSS so that no image file is needed. To replace
+it with a logo, use Quarto's own mechanism —
+
+```yaml
+website:
+  navbar:
+    logo: assets/logo.svg
+```
+
+— and neutralise the glyph rule in a palette or a site-level SCSS:
+
+```scss
+.navbar-title::before { content: none; }
+```
+
+## Site-level additions
+
+Anything page- or site-specific belongs in the site, not in the theme:
+Quarto merges `css:` and `theme:` additions from `_quarto.yml` on top
+of the format. The zotQDA sites add only `fonts/noto.css` this way.
+
+One caution: the rules layer targets Quarto's HTML classes, and a few
+rules carry `!important` or raised specificity because Quarto's own
+rules would otherwise win. If an override of yours seems to do
+nothing, look at those first — each is commented in `zotqda.scss`
+where it happens.

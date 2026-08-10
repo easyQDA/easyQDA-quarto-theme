@@ -1,0 +1,25 @@
+---
+title: "Licence"
+---
+
+
+The theme is **MIT-licensed** (see `LICENSE` in the repository): use,
+copy, modify and redistribute it, commercially or not, with
+attribution preserved. Vendoring it into a project under any licence —
+including the AGPL projects of the zotQDA ecosystem — is exactly the
+intended use.
+
+Two third-party works ship with it, under their own terms:
+
+| Component | Licence | Where |
+|---|---|---|
+| Noto Sans (woff2 subsets and TTFs) | SIL Open Font License 1.1 | `fonts/OFL.txt` |
+| MathJax (vendored build) | Apache License 2.0 | `offline/mathjax/LICENSE` |
+
+Both licences permit redistribution as part of your site; keep the
+licence files in place when you vendor the directories, and the
+obligation is met.
+
+The websites built with the theme are not touched by any of this: the
+theme claims no rights over your content, and nothing in the built
+output phones home or embeds a notice.

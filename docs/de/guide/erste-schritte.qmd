@@ -1,0 +1,84 @@
+---
+title: "Erste Schritte"
+---
+
+
+## Installation
+
+Zwei Wege hinein. Der Quarto-Weg:
+
+```sh
+quarto add fre-ms/zotqda-quarto-theme
+```
+
+Oder der Weg der zotQDA-Sites — **das Theme einvendoren**: Kopieren Sie
+`_extensions/` (und was Sie sonst nutzen: `fonts/`, `offline/`,
+`print/`) in Ihr Repositorium. Ihre Site baut dann ohne Netzzugriff und
+ohne dass dieses Repositorium existieren muss — genau die Eigenschaft,
+um die es dem Theme geht. Ein kleines `update-theme.sh`, das aus einem
+danebenliegenden Checkout neu kopiert, hält die Kopie ehrlich; qdaPy
+und qdaR führen je eines.
+
+Dann das Format in der `_quarto.yml` wählen:
+
+```yaml
+format:
+  zotqda-theme-html: default
+```
+
+Das Format bringt `toc`, `code-copy`, das Hell/Dunkel-Paar und ein
+mitwechselndes Syntax-Highlighting-Paar (github / github-dark) mit.
+Eine minimale lauffähige Site liegt in `examples/minimal/` — es ist die
+Site, die die CI dieses Repositoriums bei jedem Push rendert und per
+Smoketest prüft.
+
+## Selbst gehostete Noto Sans (optional)
+
+`fonts/` in das Site-Projekt kopieren und deklarieren:
+
+```yaml
+project:
+  resources:
+    - fonts/
+format:
+  zotqda-theme-html:
+    css: fonts/noto.css
+```
+
+Die woff2-Subsets behalten ihre `unicode-range`, eine Seite lädt also
+nur die Schriftsysteme, die sie verwendet. Ohne diesen Block fällt das
+Theme auf den System-Schriftstapel zurück — weiterhin ohne jede externe
+Anfrage.
+
+## Die Quarto-Version festnageln
+
+Gestaltungsregeln wie Offline-Reparaturen sind gegen eine konkrete
+Quarto-Version geschrieben — derzeit **1.9.38**. Nageln Sie sie in
+Ihrem Build-Skript fest und behandeln Sie Upgrades als bewusste
+Ereignisse; [Wartung und Quarto-Pin](../dev/wartung.qmd) beschreibt das
+Vorgehen. Das Build-Skript dieser Dokumentation verweigert jede andere
+Version, solange man es nicht ausdrücklich anders anweist:
+
+```sh
+PINNED="1.9.38"
+ACTUAL="$(quarto --version)"
+if [ "$ACTUAL" != "$PINNED" ] && [ -z "$ALLOW_UNPINNED_QUARTO" ]; then
+  echo "quarto is $ACTUAL, pinned is $PINNED" >&2
+  exit 1
+fi
+```
+
+## Ein vollständiger Site-Build
+
+Was die zotQDA-Sites ausführen, auf eine Sprache reduziert:
+
+```sh
+quarto render meinesite
+python3 offline/postprocess.py meinesite/_site   # die Offline-Reparaturen
+python3 offline/smoketest.py  meinesite/_site    # Beweis im Headless-Browser
+python3 print/make_pdf.py meinesite meinesite/_site/doku.pdf   # optional
+```
+
+Jeder der drei Schritte hat hier seine eigene Seite:
+[Offline-Fähigkeit](offline.qmd), [Die Doku als ein PDF](pdf.qmd) — und
+für eine Site in zwei Sprachen [Mehrsprachige Sites](mehrsprachig.qmd).

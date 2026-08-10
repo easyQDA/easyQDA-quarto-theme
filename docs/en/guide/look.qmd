@@ -1,0 +1,64 @@
+---
+title: "The look"
+---
+
+
+The layout you are reading: a centred grid of at most 76rem, three
+columns on wide screens — navigation, content, table of contents. The
+header stays pinned while you scroll, and content disappears behind it
+as behind frosted glass rather than a hard edge. All of it lives in one
+rules file, `_extensions/zotqda-theme/zotqda.scss`; the two palette
+files contribute colours and nothing else.
+
+## The header
+
+Left to right: an open-book glyph before the site title (a placeholder
+that [a logo can replace](customising.qmd)), then — at the right edge of
+the content column — search, the PDF icon, the language menu and the
+day/night toggle. The GitHub link sits apart from them, above the right
+sidebar, where a reader's eye expects the way out to the source.
+
+The toggle shows a moon in light mode and a sun in dark mode. The
+language menu is a dropdown rather than a two-way switch, so sites are
+not locked in when a third language arrives.
+
+## The sidebars
+
+Navigation entries are set slightly larger than Quarto's default, with
+more air between them — long section lists stay scannable. The current
+page carries a soft accent pill that extends a little beyond its text,
+the same visual language the zotQDA plugin documentation always had.
+The right column highlights the section you are reading as you scroll;
+that scrollspy is one of the things the
+[offline repairs](offline.qmd) keep working from a plain file tree.
+
+## Callouts
+
+Quarto's native callouts, restyled to match:
+
+::: {.callout-note title="A note"}
+Written as `::: {.callout-note}` — nothing theme-specific to learn.
+The five Quarto types (`note`, `tip`, `warning`, `important`,
+`caution`) all render.
+:::
+
+::: {.callout-warning title="A warning"}
+The zotQDA sites use these for their beta notices.
+:::
+
+## Code and type
+
+Text is self-hosted Noto Sans — chosen for its wide Unicode coverage,
+which matters in scientific writing (α, ≤, →, combining diacritics all
+render from the same family). Code blocks highlight with `github` in
+light mode and `github-dark` in dark mode:
+
+```python
+def alpha(do, de):
+    """Krippendorff, in one line."""
+    return 1 - do / de
+```
+
+Both palettes, the pill, the frosted header and the sidebar type are
+inspectable on this very page — switch the toggle in the header and
+watch the whole page follow, code blocks included.

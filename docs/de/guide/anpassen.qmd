@@ -1,0 +1,78 @@
+---
+title: "Anpassen"
+---
+
+
+Das Theme ist so geschnitten, dass der häufigste Fall — gleiche
+Struktur, andere Farben — eine kleine Datei berührt und sonst nichts.
+
+## Wo was liegt
+
+```
+_extensions/zotqda-theme/
+├── _extension.yml       das Format: Theme-Paar, Highlight-Paar, Vorgaben
+├── zotqda.scss          gemeinsame Vorgaben und ALLE Regeln
+├── zotqda-light.scss    helle Palette — nur Farben
+└── zotqda-dark.scss     dunkle Palette — nur Farben
+```
+
+`zotqda.scss` trägt jede Strukturregel (Kopfzeile, Raster,
+Seitenleisten, Pillen, Callouts), geschrieben gegen SCSS-Variablen.
+Die Palettendateien überschreiben diese Variablen und steuern keine
+Regeln bei. Die Reihenfolge zählt und ist in `_extension.yml`
+festgehalten: In Quartos Theme-Listen **gewinnen spätere Dateien die
+Vorgaben**, die Paletten kommen also nach der gemeinsamen Datei.
+
+## Eigene Farben
+
+Bearbeiten Sie die Palettendateien, oder legen Sie ein eigenes Paar
+daneben und verweisen Sie `_extension.yml` darauf. Die Variablen, die
+eine Palette tatsächlich setzt, mit den hellen Auslieferungswerten:
+
+```scss
+$zq-accent:     #3f51b5;   // Indigo — aktive Marker, Links
+$zq-accent-ink: #3547a8;   // etwas tiefer, für Links auf Weiß
+$zq-ink:        #212630;   // Fließtext
+$zq-muted:      #5d6572;   // Seitenleisten, Fußzeile
+$zq-surface:    #f5f6f8;   // Codeblöcke, Banner
+$zq-border:     #e5e7eb;
+$zq-navbar-bg:  #ffffff;   // Milchglas-Kopfzeile (80 % Deckung angewandt)
+$zq-pill:       rgba(63, 81, 181, 0.10);  // die Pille der aktiven Seite
+```
+
+Die Paletten bilden zusätzlich eine Handvoll
+Quarto-/Bootstrap-Variablen (`$body-bg`, `$link-color`, `$code-bg`, …)
+darauf ab. Alles Übrige fällt auf die gemeinsamen Vorgaben in
+`zotqda.scss` zurück.
+
+## Ihr Logo statt des Buches
+
+Das aufgeschlagene Buch vor dem Titel ist ein Platzhalter, als
+Bootstrap-Icon-Glyphe in CSS gezeichnet, damit keine Bilddatei nötig
+ist. Für ein Logo nutzen Sie Quartos eigenen Mechanismus —
+
+```yaml
+website:
+  navbar:
+    logo: assets/logo.svg
+```
+
+— und neutralisieren die Glyphenregel in einer Palette oder einem
+Site-SCSS:
+
+```scss
+.navbar-title::before { content: none; }
+```
+
+## Ergänzungen auf Site-Ebene
+
+Alles Seiten- oder Site-Spezifische gehört in die Site, nicht ins
+Theme: Quarto legt `css:`- und `theme:`-Ergänzungen aus der
+`_quarto.yml` über das Format. Die zotQDA-Sites ergänzen auf diesem Weg
+nur `fonts/noto.css`.
+
+Eine Vorsicht: Die Regelschicht zielt auf Quartos HTML-Klassen, und
+einige Regeln tragen `!important` oder erhöhte Spezifität, weil Quartos
+eigene Regeln sonst gewännen. Scheint eine Ihrer Übersteuerungen nichts
+zu bewirken, schauen Sie zuerst dort nach — jede ist in `zotqda.scss`
+an Ort und Stelle kommentiert.

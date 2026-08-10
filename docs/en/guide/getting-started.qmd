@@ -1,0 +1,82 @@
+---
+title: "Getting started"
+---
+
+
+## Install
+
+Two ways in. The Quarto way:
+
+```sh
+quarto add fre-ms/zotqda-quarto-theme
+```
+
+Or the way the zotQDA sites do it — **vendor the theme**: copy
+`_extensions/` (and whatever else you use: `fonts/`, `offline/`,
+`print/`) into your repository. Your site then builds without any
+network access and without this repository existing, which is exactly
+the property the theme is about. A small `update-theme.sh` that
+re-copies from a sibling checkout keeps the vendored copy honest; qdaPy
+and qdaR each carry one.
+
+Then select the format in `_quarto.yml`:
+
+```yaml
+format:
+  zotqda-theme-html: default
+```
+
+The format brings `toc`, `code-copy`, the light/dark theme pair and an
+adaptive syntax-highlight pair (github / github-dark) with it. A
+minimal working site lives in `examples/minimal/` — it is the site this
+repository's CI renders and smoke-tests on every push.
+
+## Self-hosted Noto Sans (optional)
+
+Copy `fonts/` into the site project and declare it:
+
+```yaml
+project:
+  resources:
+    - fonts/
+format:
+  zotqda-theme-html:
+    css: fonts/noto.css
+```
+
+The woff2 subsets keep their `unicode-range`, so a page only loads the
+scripts it uses. Without this block the theme falls back to the system
+font stack — still without any external request.
+
+## Pin your Quarto version
+
+Both the styling rules and the offline repairs are written against a
+concrete Quarto version — currently **1.9.38**. Pin it in your build
+script and treat upgrades as deliberate events;
+[Maintenance and the Quarto pin](../dev/maintenance.qmd) describes the
+procedure. The build script of this documentation refuses to run with
+any other version unless explicitly told to:
+
+```sh
+PINNED="1.9.38"
+ACTUAL="$(quarto --version)"
+if [ "$ACTUAL" != "$PINNED" ] && [ -z "$ALLOW_UNPINNED_QUARTO" ]; then
+  echo "quarto is $ACTUAL, pinned is $PINNED" >&2
+  exit 1
+fi
+```
+
+## A complete site build
+
+What the zotQDA sites run, reduced to one language:
+
+```sh
+quarto render mysite
+python3 offline/postprocess.py mysite/_site   # the offline repairs
+python3 offline/smoketest.py  mysite/_site    # headless-browser proof
+python3 print/make_pdf.py mysite mysite/_site/docs.pdf   # optional
+```
+
+Each of the three steps has its own page here:
+[Working offline](offline.qmd), [The docs as one PDF](pdf.qmd) — and
+for a site in two languages, [Multilingual sites](multilingual.qmd).

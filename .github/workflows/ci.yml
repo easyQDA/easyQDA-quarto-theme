@@ -34,3 +34,28 @@ jobs:
         env:
           QDA_SMOKE_BROWSER: google-chrome
         run: python3 offline/smoketest.py examples/minimal/_site
+
+  documentation:
+    # The documentation site (docs/en + docs/de) dogfoods the theme: it
+    # is rendered with the same pin, repaired for offline use and proven
+    # in a headless browser — the full pipeline a consumer site runs.
+    name: documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "1.9.38"   # keep equal to docs/build.sh's pin
+
+      - name: Build the site
+        run: |
+          pip install pyyaml
+          GEN_PY=python ./docs/build.sh
+          python3 offline/smoketest.py site/en site/de
+        env:
+          QDA_SMOKE_BROWSER: google-chrome

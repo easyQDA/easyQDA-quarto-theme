@@ -2,3 +2,16 @@
 /examples/minimal/_site/
 /examples/minimal/_extensions/
 /examples/minimal/.quarto/
+
+# the rendered documentation; rebuilt by docs/build.sh and published by
+# docs.yml under a version directory on theme.zotqda.org
+/site/
+
+# per-language mirrors of the repository-root _extensions/ and fonts/,
+# recreated by docs/build.sh on every run
+/docs/en/_extensions/
+/docs/de/_extensions/
+/docs/en/fonts/
+/docs/de/fonts/
+/docs/en/theme/
+/docs/de/theme/

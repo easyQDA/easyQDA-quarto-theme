@@ -1,0 +1,68 @@
+---
+title: "Die Gestaltung"
+---
+
+
+Das Layout, das Sie gerade lesen: ein zentriertes Raster von höchstens
+76rem, auf breiten Bildschirmen drei Spalten — Navigation, Inhalt,
+Inhaltsverzeichnis. Die Kopfzeile bleibt beim Scrollen stehen, und der
+Inhalt verschwindet dahinter wie hinter Milchglas statt an einer harten
+Kante. All das lebt in einer Regeldatei,
+`_extensions/zotqda-theme/zotqda.scss`; die beiden Palettendateien
+steuern Farben bei und sonst nichts.
+
+## Die Kopfzeile
+
+Von links nach rechts: ein aufgeschlagenes Buch vor dem Titel der Site
+(ein Platzhalter, den [ein Logo ersetzen kann](anpassen.qmd)), dann —
+am rechten Rand der Inhaltsspalte — Suche, PDF-Symbol, Sprachmenü und
+der Tag/Nacht-Schalter. Der GitHub-Verweis sitzt abgesetzt davon über
+der rechten Seitenleiste, wo das Auge den Weg zum Quelltext erwartet.
+
+Der Schalter zeigt im Hellmodus einen Mond und im Dunkelmodus eine
+Sonne. Das Sprachmenü ist ein Aufklappmenü statt eines
+Zwei-Wege-Schalters — Sites sind nicht festgelegt, wenn eine dritte
+Sprache dazukommt.
+
+## Die Seitenleisten
+
+Navigationseinträge sind etwas größer gesetzt als in Quartos Standard,
+mit mehr Luft dazwischen — lange Abschnittslisten bleiben überschaubar.
+Die aktuelle Seite trägt eine sanfte Akzent-Pille, die etwas über ihren
+Text hinausreicht, dieselbe Bildsprache, die die
+zotQDA-Plugin-Dokumentation immer hatte. Die rechte Spalte hebt beim
+Scrollen den Abschnitt hervor, den Sie gerade lesen; dieser Scrollspy
+gehört zu den Dingen, die die [Offline-Reparaturen](offline.qmd) auch
+im einfachen Dateibaum am Leben halten.
+
+## Callouts
+
+Quartos native Callouts, passend eingekleidet:
+
+::: {.callout-note title="Ein Hinweis"}
+Geschrieben als `::: {.callout-note}` — nichts Theme-Spezifisches zu
+lernen. Alle fünf Quarto-Typen (`note`, `tip`, `warning`, `important`,
+`caution`) werden dargestellt.
+:::
+
+::: {.callout-warning title="Eine Warnung"}
+Die zotQDA-Sites nutzen diese Form für ihre Beta-Hinweise.
+:::
+
+## Code und Schrift
+
+Der Text ist selbst gehostete Noto Sans — gewählt wegen ihrer breiten
+Unicode-Abdeckung, die im wissenschaftlichen Schreiben zählt (α, ≤, →
+und kombinierende Diakritika kommen aus derselben Familie). Codeblöcke
+highlighten hell mit `github`, dunkel mit `github-dark`:
+
+```python
+def alpha(do, de):
+    """Krippendorff, in einer Zeile."""
+    return 1 - do / de
+```
+
+Beide Paletten, die Pille, die Milchglas-Kopfzeile und die
+Seitenleisten-Typografie lassen sich auf genau dieser Seite prüfen —
+legen Sie den Schalter in der Kopfzeile um und sehen Sie zu, wie die
+ganze Seite folgt, Codeblöcke eingeschlossen.

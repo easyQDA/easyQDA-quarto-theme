@@ -1,0 +1,46 @@
+---
+title: "Aufbau des Repositoriums"
+---
+
+
+```
+_extensions/zotqda-theme/   das Format: _extension.yml, zotqda.scss
+                            (alle Regeln), zotqda-light/-dark.scss
+                            (nur Paletten)
+fonts/                      Noto-Sans-woff2-Subsets + noto.css (SIL OFL 1.1)
+offline/postprocess.py      die drei Offline-Reparaturen, laut bei Drift
+offline/smoketest.py        der Beweis im Headless-Browser
+offline/mathjax/            beigelegtes MathJax (Apache 2.0)
+print/                      der Ein-PDF-Bauer und die Noto-TTFs, die er einbettet
+scripts/gen_versions.py     pflegt versions.json aus der _extension.yml
+examples/minimal/           die Site, die die CI rendert und smoked
+examples/site-publish.yml   Vorlage für den Publish-Workflow einer Site
+docs/                       diese Dokumentation (en/ + de/), gebaut mit
+                            dem Theme selbst
+docs-root/                  Sprachwahl und Nackte-Adresse-Abkürzung,
+                            die diese Site ausliefert
+```
+
+## Wie Nutzer es einbinden
+
+Die zotQDA-Sites **vendoren** das Theme, statt es beim Bauen zu holen:
+qdaPy und qdaR halten die eine Kopie in `docs/_theme/` (von ihrer
+`build.sh` in die Sprachprojekte gespiegelt), dazu `offline/` und
+`print/` daneben, und beide führen ein `update-theme.sh`, das alles aus
+einem danebenliegenden Checkout dieses Repositoriums neu kopiert. Theme
+hier ändern, dort `update-theme.sh` laufen lassen, neu bauen,
+committen — die Sites bauen in der CI, ohne dass dieses Repositorium
+existieren muss.
+
+Diese Dokumentation ist die Ausnahme, die das Layout bestätigt: Sie
+lebt *im* Theme-Repositorium, ihre `docs/build.sh` spiegelt
+`_extensions/` und `fonts/` also direkt von der Repositoriumswurzel —
+die eine Kopie ganz ohne Vendoring-Schritt.
+
+## Das Beispiel als Vertrag
+
+`examples/minimal/` ist bewusst winzig — eine `_quarto.yml` und eine
+Seite. Die CI rendert es bei jedem Push mit dem festgenagelten Quarto,
+wendet die Offline-Reparaturen an und lässt den Smoketest laufen. Was
+das Theme verspricht, soll dort beobachtbar sein; was bricht, soll
+zuerst dort brechen und nicht im Build eines Nutzers.

@@ -1,0 +1,46 @@
+---
+title: "Repository layout"
+---
+
+
+```
+_extensions/zotqda-theme/   the format: _extension.yml, zotqda.scss
+                            (all rules), zotqda-light/-dark.scss
+                            (palettes only)
+fonts/                      Noto Sans woff2 subsets + noto.css (SIL OFL 1.1)
+offline/postprocess.py      the three offline repairs, loud on drift
+offline/smoketest.py        the headless-browser proof
+offline/mathjax/            vendored MathJax (Apache 2.0)
+print/                      the one-PDF builder and the Noto TTFs it embeds
+scripts/gen_versions.py     maintains versions.json from _extension.yml
+examples/minimal/           the site the CI renders and smokes
+examples/site-publish.yml   template for a site's publish workflow
+docs/                       this documentation (en/ + de/), built with
+                            the theme itself
+docs-root/                  the language chooser and the bare-address
+                            shortcut this site deploys
+```
+
+## How consumers use it
+
+The zotQDA sites **vendor** the theme rather than fetching it at build
+time: qdaPy and qdaR each keep the single copy in `docs/_theme/`
+(mirrored into the language projects by their `build.sh`), plus
+`offline/` and `print/` beside it, and each carries an
+`update-theme.sh` that re-copies everything from a sibling checkout of
+this repository. Change the theme here, run `update-theme.sh` there,
+rebuild, commit — the sites build in CI without this repository
+existing.
+
+This documentation is the exception that proves the layout: it lives
+*inside* the theme repository, so its `docs/build.sh` mirrors
+`_extensions/` and `fonts/` straight from the repository root — the
+one copy with no vendoring step at all.
+
+## The example as a contract
+
+`examples/minimal/` is deliberately tiny — a `_quarto.yml` and one
+page. The CI renders it with the pinned Quarto, applies the offline
+repairs and runs the smoketest on every push. Anything the theme
+promises should be observable there; anything that breaks should
+break there first, not in a consumer's build.
