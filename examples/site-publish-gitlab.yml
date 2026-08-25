@@ -1,0 +1,65 @@
+# Template for a site on this theme published via GitLab Pages —
+# the GitLab (CE) counterpart of site-publish.yml. Not active in this
+# repository. Copy into the site's repo as .gitlab-ci.yml and adapt
+# the marked spots. Assumes the scaffold layout (examples/scaffold/):
+# ./build.sh as the single entry point, output in public/.
+#
+# The job is named `pages`; its public/ artifact is what the Pages
+# daemon serves. Where the pages physically live (the GitLab server or
+# elsewhere) is purely GitLab configuration (`pages_external_url`) —
+# this file never needs to change for that.
+#
+# Quarto is not part of the Ubuntu image and is installed into the
+# disposable CI container. The preferred source is THIS project's
+# Generic Package Registry (fill it once, see below) — an instance
+# without internet access stays self-sufficient; only if the package
+# is missing there does the job fall back to the upstream Quarto
+# release on github.com. Filling the registry once (from a machine
+# with internet access, <TOKEN> with scope api):
+#
+#   V=1.9.38
+#   curl -fsSLO "https://github.com/quarto-dev/quarto-cli/releases/download/v$V/quarto-$V-linux-amd64.deb"
+#   curl --header "PRIVATE-TOKEN: <TOKEN>" \
+#        --upload-file "quarto-$V-linux-amd64.deb" \
+#        "https://<gitlab-host>/api/v4/projects/<PROJECT-ID>/packages/generic/quarto/$V/quarto-$V-linux-amd64.deb"
+#
+# Also required: a runner with the Docker executor (image below). On a
+# shell runner, install Quarto/Python/rsync there instead and shorten
+# the before_script.
+
+image: ubuntu:24.04
+
+variables:
+  # Keep equal to the pin in build.sh; upgrades are deliberate events.
+  QUARTO_VERSION: "1.9.38"
+  DEBIAN_FRONTEND: noninteractive
+
+pages:
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  before_script:
+    - apt-get update
+    - apt-get install -y --no-install-recommends ca-certificates curl make python3 python3-pip python3-yaml rsync
+    # Tools of the figure scripts (build.sh runs `make asset`): Python
+    # packages pinned in requirements.txt; once R scripts exist, add
+    # r-base-core and their packages here.
+    - |
+      if [ -f code/abbildungen/requirements.txt ]; then
+        pip3 install --break-system-packages -r code/abbildungen/requirements.txt
+      fi
+    - |
+      curl -fsSL --header "JOB-TOKEN: ${CI_JOB_TOKEN}" -o /tmp/quarto.deb \
+        "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/quarto/${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb" \
+      || curl -fsSL -o /tmp/quarto.deb \
+        "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
+    - apt-get install -y /tmp/quarto.deb
+  script:
+    - GEN_PY=python3 ./build.sh
+    # Optional proof of the offline capability (needs a headless
+    # Chromium; adapt the language list):
+    # - apt-get install -y chromium-browser
+    # - QDA_SMOKE_BROWSER=chromium-browser python3 code/smoketest.py public/de public/en
+  artifacts:
+    paths:
+      - public
