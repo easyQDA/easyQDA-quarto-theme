@@ -116,8 +116,22 @@ def localize_search(site: Path) -> None:
         encoding="utf-8")
 
 
+def mathjax_dir() -> Path:
+    # The vendored MathJax sits beside this script in the theme
+    # repository (offline/mathjax/); a site that vendors the script
+    # into code/ keeps the copy under asset/offline/mathjax instead.
+    # Both layouts work unpatched.
+    here = Path(__file__).resolve().parent
+    for cand in (here / "mathjax",
+                 here.parent / "asset" / "offline" / "mathjax"):
+        if cand.is_dir():
+            return cand
+    die(f"vendored MathJax not found (looked beside {here} and under "
+        "asset/offline/mathjax)")
+
+
 def localize_math(site: Path) -> None:
-    mj_src = Path(__file__).resolve().parent / "mathjax"
+    mj_src = mathjax_dir()
     mj_dst = site / "site_libs" / "mathjax"
     if mj_dst.exists():
         shutil.rmtree(mj_dst)
@@ -126,9 +140,17 @@ def localize_math(site: Path) -> None:
     for page in site.rglob("*.html"):
         html = page.read_text(encoding="utf-8")
         prefix = "../" * (len(page.relative_to(site).parts) - 1)
-        patched = html.replace(
-            f'src="{MATHJAX_CDN}"',
-            f'src="{prefix}site_libs/mathjax/tex-chtml-full.js"')
+        # Quarto's MathJax script moved from v3
+        # (mathjax@3/es5/tex-chtml-full.js) to v4 (mathjax@4/tex-chtml.js)
+        # between Quarto 1.9 and 1.10. Match BOTH, so the theme localises the
+        # formulas whichever Quarto built the site; the vendored, self-contained
+        # tex-chtml-full.js renders the raw LaTeX either way (the
+        # window.MathJax.typeset API is unchanged across v3 and v4).
+        patched = re.sub(
+            r'src="https://cdn\.jsdelivr\.net/npm/mathjax@\d+/'
+            r'(?:es5/)?tex-chtml(?:-full)?\.js"',
+            f'src="{prefix}site_libs/mathjax/tex-chtml-full.js"',
+            html)
         patched = re.sub(
             r'<script src="https://cdnjs\.cloudflare\.com/polyfill/[^"]*">'
             r'</script>\s*', "", patched)
