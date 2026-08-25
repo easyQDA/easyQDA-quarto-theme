@@ -15,3 +15,5 @@
 /docs/de/fonts/
 /docs/en/theme/
 /docs/de/theme/
+__pycache__/
+*.pyc
