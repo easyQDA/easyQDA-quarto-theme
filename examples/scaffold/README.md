@@ -22,7 +22,7 @@ mysite/
 │   ├── generiert/        # written by `make asset`, gitignored
 │   └── …                 # hand-maintained graphics: vector, please
 ├── code/                 # every script of the project
-│   ├── gen_langmap.py    # ← theme scripts/gen_langmap.py, unchanged
+│   ├── gen_langmap.py    # ← theme script/gen_langmap.py, unchanged
 │   ├── postprocess.py    # ← theme offline/postprocess.py, unchanged
 │   ├── smoketest.py      # ← theme offline/smoketest.py, unchanged
 │   ├── make_pdf.py       # ← theme print/make_pdf.py, unchanged

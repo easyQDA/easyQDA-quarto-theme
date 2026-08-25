@@ -7,7 +7,7 @@ title: "The docs as one PDF"
 the file behind the PDF icon in this site's header:
 
 ```sh
-python3 print/make_pdf.py docs/en site/en/docs.pdf
+python3 print/make_pdf.py doc/en site/en/docs.pdf
 ```
 
 ## What it does, and why this way
@@ -59,8 +59,8 @@ and call the script from your build after the site render, once per
 language:
 
 ```sh
-python3 print/make_pdf.py docs/en site/en/docs.pdf
-python3 print/make_pdf.py docs/de site/de/Dokumentation.pdf
+python3 print/make_pdf.py doc/en site/en/docs.pdf
+python3 print/make_pdf.py doc/de site/de/Dokumentation.pdf
 ```
 
 The PDF is rebuilt with the site, so it is always the same release as

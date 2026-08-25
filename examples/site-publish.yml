@@ -38,7 +38,7 @@ jobs:
       # ---------------------------------------------------------------
 
       - name: Build
-        run: ./quarto-docs/build.sh          # ADAPT: the site's build script
+        run: ./quarto-doc/build.sh          # ADAPT: the site's build script
 
       - name: Smoke test
         env:

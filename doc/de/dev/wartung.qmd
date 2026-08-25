@@ -25,14 +25,14 @@ erkannte Reparatur zu überspringen.
 ## Quarto aktualisieren, mit Bedacht
 
 1. Einmal ausdrücklich mit der neuen Version bauen:
-   `ALLOW_UNPINNED_QUARTO=1 ./docs/build.sh`
+   `ALLOW_UNPINNED_QUARTO=1 ./doc/build.sh`
 2. Scheitert `postprocess.py` laut, hat sich Quartos Ausgabe geändert —
    zuerst die Reparatur an die neue Ausgabe anpassen.
 3. Den Smoketest laufen lassen; er muss für jede geprüfte Seite grün
    sein.
 4. Eine Seite mit eigenen Augen ansehen: Kopfzeile, Pillen, Schalter,
    eine Formel, die Suche.
-5. Den Pin weiterschieben — hier (CI-Workflow und `docs/build.sh`),
+5. Den Pin weiterschieben — hier (CI-Workflow und `doc/build.sh`),
    dann in den Nutzer-Repositorien (deren `build.sh` und Workflows),
    und über deren `update-theme.sh` neu vendoren.
 
@@ -45,10 +45,10 @@ Releases, zwei verschiedene Stände des Themes dürfen sich also nie eine
 Nummer teilen.
 
 1. `version:` in der `_extension.yml` erhöhen.
-2. `python scripts/gen_versions.py` — trägt sie in `versions.json` ein.
+2. `python script/gen_versions.py` — trägt sie in `versions.json` ein.
 3. Committen, `v<version>` taggen, pushen; das Deploy veröffentlicht
    diese Site unter dem neuen Versionsverzeichnis.
-4. In qdaPy und qdaR: `./docs/update-theme.sh`, neu bauen, committen.
+4. In qdaPy und qdaR: `./doc/update-theme.sh`, neu bauen, committen.
 
 ## Die Übersteuerungen mit Gewicht
 

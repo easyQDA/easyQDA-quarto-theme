@@ -17,7 +17,7 @@ LANGS="en de"
 PINNED="1.9.38"
 ACTUAL="$(quarto --version)"
 if [ "$ACTUAL" != "$PINNED" ] && [ -z "$ALLOW_UNPINNED_QUARTO" ]; then
-  echo "docs/build.sh: quarto is $ACTUAL, pinned is $PINNED" >&2
+  echo "doc/build.sh: quarto is $ACTUAL, pinned is $PINNED" >&2
   exit 1
 fi
 
@@ -26,7 +26,7 @@ fi
 # chunk in a page (sites that want executable cells simply drop this
 # guard — the theme supports them).
 if grep -rn --include='*.qmd' '^```{' $LANGS; then
-  echo "docs/build.sh: executable code chunks found (see above)" >&2
+  echo "doc/build.sh: executable code chunks found (see above)" >&2
   exit 1
 fi
 
@@ -48,7 +48,7 @@ done
 # fresh start deleted pages would linger in the published site.
 for lang in $LANGS; do rm -rf "../site/$lang"; done
 
-"$GEN_PY" ../scripts/gen_langmap.py --extra-js shared/versions.js $LANGS
+"$GEN_PY" ../script/gen_langmap.py --extra-js shared/versions.js $LANGS
 for lang in $LANGS; do quarto render "$lang"; done
 python3 ../offline/postprocess.py ../site/en ../site/de
 

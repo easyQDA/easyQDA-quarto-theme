@@ -90,7 +90,7 @@ third argument or set `author:` in `index.qmd`'s front matter.
 
 ## Multilingual sites
 
-`scripts/gen_langmap.py` makes the header's language switcher send
+`script/gen_langmap.py` makes the header's language switcher send
 readers to **the translation of the page being read** instead of the
 other language's front page. It takes the language project directories
 as arguments, walks their sidebars in parallel — they must list the
@@ -131,7 +131,7 @@ are templates for a documentation site's own publish workflow.
 - `offline/smoketest.py` — the headless-browser proof
 - `offline/mathjax/` — vendored MathJax (Apache 2.0)
 - `print/` — the one-PDF builder and the Noto Sans TTFs it embeds
-- `scripts/gen_langmap.py` — the language switcher's page-to-page map
+- `script/gen_langmap.py` — the language switcher's page-to-page map
 - `examples/minimal/` — the site the CI renders and smokes
 - `examples/scaffold/` — a copyable project layout for a full
   bilingual site (build script, figure Makefile, root language switch)

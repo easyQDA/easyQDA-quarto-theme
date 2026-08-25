@@ -7,7 +7,7 @@ title: "Die Doku als ein PDF"
 verlinktes PDF — die Datei hinter dem PDF-Symbol im Kopf dieser Site:
 
 ```sh
-python3 print/make_pdf.py docs/de site/de/Dokumentation.pdf
+python3 print/make_pdf.py doc/de site/de/Dokumentation.pdf
 ```
 
 ## Was es tut, und warum so
@@ -59,8 +59,8 @@ und rufen Sie das Skript in Ihrem Build nach dem Site-Render auf,
 einmal je Sprache:
 
 ```sh
-python3 print/make_pdf.py docs/en site/en/docs.pdf
-python3 print/make_pdf.py docs/de site/de/Dokumentation.pdf
+python3 print/make_pdf.py doc/en site/en/docs.pdf
+python3 print/make_pdf.py doc/de site/de/Dokumentation.pdf
 ```
 
 Das PDF wird mit der Site gebaut und ist damit immer derselbe Stand wie

@@ -35,7 +35,7 @@ anderen Sprache. Die unten erzeugte Karte biegt sie auf **die
 
 ## gen_langmap.py
 
-`scripts/gen_langmap.py` bekommt die Sprachverzeichnisse als Argumente
+`script/gen_langmap.py` bekommt die Sprachverzeichnisse als Argumente
 (`gen_langmap.py en de`), läuft deren Seitenleisten parallel ab und
 schreibt die Seite-zu-Seite-Karte samt Umbiegelogik als
 `theme/scripts.html` in jedes Projekt, das sie in jede Seite einbettet
@@ -64,5 +64,5 @@ funktioniert also über http und aus dem einfachen Dateibaum.
 Über den beiden Sprachverzeichnissen sitzt eine kleine `index.html`,
 die Besucher zur Browsersprache weiterleitet und ohne JavaScript zwei
 schlichte Verweise zeigt — dort bleiben auch die Rechtsseiten
-erreichbar. `docs-root/index.html` in diesem Repositorium ist die
+erreichbar. `doc-root/index.html` in diesem Repositorium ist die
 Kopie, die diese Site ausliefert; nehmen Sie sie als Vorlage.

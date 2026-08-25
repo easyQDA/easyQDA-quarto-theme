@@ -12,12 +12,12 @@ offline/postprocess.py      die drei Offline-Reparaturen, laut bei Drift
 offline/smoketest.py        der Beweis im Headless-Browser
 offline/mathjax/            beigelegtes MathJax (Apache 2.0)
 print/                      der Ein-PDF-Bauer und die Noto-TTFs, die er einbettet
-scripts/gen_versions.py     pflegt versions.json aus der _extension.yml
+script/gen_versions.py     pflegt versions.json aus der _extension.yml
 examples/minimal/           die Site, die die CI rendert und smoked
 examples/site-publish.yml   Vorlage für den Publish-Workflow einer Site
-docs/                       diese Dokumentation (en/ + de/), gebaut mit
+doc/                        diese Dokumentation (en/ + de/), gebaut mit
                             dem Theme selbst
-docs-root/                  Sprachwahl und Nackte-Adresse-Abkürzung,
+doc-root/                  Sprachwahl und Nackte-Adresse-Abkürzung,
                             die diese Site ausliefert
 ```
 
@@ -33,7 +33,7 @@ committen — die Sites bauen in der CI, ohne dass dieses Repositorium
 existieren muss.
 
 Diese Dokumentation ist die Ausnahme, die das Layout bestätigt: Sie
-lebt *im* Theme-Repositorium, ihre `docs/build.sh` spiegelt
+lebt *im* Theme-Repositorium, ihre `doc/build.sh` spiegelt
 `_extensions/` und `fonts/` also direkt von der Repositoriumswurzel —
 die eine Kopie ganz ohne Vendoring-Schritt.
 

@@ -12,12 +12,12 @@ offline/postprocess.py      the three offline repairs, loud on drift
 offline/smoketest.py        the headless-browser proof
 offline/mathjax/            vendored MathJax (Apache 2.0)
 print/                      the one-PDF builder and the Noto TTFs it embeds
-scripts/gen_versions.py     maintains versions.json from _extension.yml
+script/gen_versions.py     maintains versions.json from _extension.yml
 examples/minimal/           the site the CI renders and smokes
 examples/site-publish.yml   template for a site's publish workflow
-docs/                       this documentation (en/ + de/), built with
+doc/                        this documentation (en/ + de/), built with
                             the theme itself
-docs-root/                  the language chooser and the bare-address
+doc-root/                  the language chooser and the bare-address
                             shortcut this site deploys
 ```
 
@@ -33,7 +33,7 @@ rebuild, commit — the sites build in CI without this repository
 existing.
 
 This documentation is the exception that proves the layout: it lives
-*inside* the theme repository, so its `docs/build.sh` mirrors
+*inside* the theme repository, so its `doc/build.sh` mirrors
 `_extensions/` and `fonts/` straight from the repository root — the
 one copy with no vendoring step at all.
 

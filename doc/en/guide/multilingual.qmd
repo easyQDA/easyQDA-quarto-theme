@@ -33,7 +33,7 @@ page being read**.
 
 ## gen_langmap.py
 
-`scripts/gen_langmap.py` takes the language directories as arguments
+`script/gen_langmap.py` takes the language directories as arguments
 (`gen_langmap.py en de`), walks their sidebars in parallel and writes
 the page-to-page map plus the retargeting logic as
 `theme/scripts.html` into every project, which inlines it into every
@@ -60,5 +60,5 @@ plain file tree.
 Above the two language directories sits a small `index.html` that
 forwards visitors to their browser language and shows two plain links
 when JavaScript is off — which is also where the legal pages stay
-reachable. `docs-root/index.html` in this repository is the copy this
+reachable. `doc-root/index.html` in this repository is the copy this
 site deploys; take it as a template.

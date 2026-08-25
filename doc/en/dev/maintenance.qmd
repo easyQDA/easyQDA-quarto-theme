@@ -24,12 +24,12 @@ on drift instead of skipping a repair it no longer recognises.
 ## Upgrading Quarto, deliberately
 
 1. Build with the new version once, explicitly:
-   `ALLOW_UNPINNED_QUARTO=1 ./docs/build.sh`
+   `ALLOW_UNPINNED_QUARTO=1 ./doc/build.sh`
 2. If `postprocess.py` fails loudly, Quarto's output changed — adjust
    the repair to the new output first.
 3. Run the smoketest; it must be green for every page it samples.
 4. Eyeball one page: header, pills, toggle, a formula, search.
-5. Move the pin — here (CI workflow and `docs/build.sh`), then in the
+5. Move the pin — here (CI workflow and `doc/build.sh`), then in the
    consumer repositories (their `build.sh` and workflows), and
    re-vendor via their `update-theme.sh`.
 
@@ -41,10 +41,10 @@ site's [version switcher](../guide/versions.qmd) both key off releases,
 so two different states of the theme must never share a number.
 
 1. Bump `version:` in `_extension.yml`.
-2. `python scripts/gen_versions.py` — records it in `versions.json`.
+2. `python script/gen_versions.py` — records it in `versions.json`.
 3. Commit, tag `v<version>`, push; the deploy publishes this site
    under the new version directory.
-4. In qdaPy and qdaR: `./docs/update-theme.sh`, rebuild, commit.
+4. In qdaPy and qdaR: `./doc/update-theme.sh`, rebuild, commit.
 
 ## The overrides that carry weight
 

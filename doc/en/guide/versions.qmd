@@ -25,14 +25,14 @@ leaves `latest/` alone.
 ## versions.json and gen_versions.py
 
 `versions.json` sits at the site root, one directory above the version
-directories. `scripts/gen_versions.py` maintains it from the one place
+directories. `script/gen_versions.py` maintains it from the one place
 the version already lives — `manifest.json`, `src/*/_version.py`, a
 `DESCRIPTION` file or an `_extensions/*/_extension.yml`, whichever the
 repository has:
 
 ```sh
-python scripts/gen_versions.py            # add the current version
-python scripts/gen_versions.py --current  # just print it (the deploy asks here)
+python script/gen_versions.py            # add the current version
+python script/gen_versions.py --current  # just print it (the deploy asks here)
 ```
 
 Adding a version is a change to a committed file, deliberately: a

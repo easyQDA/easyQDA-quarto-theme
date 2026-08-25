@@ -25,14 +25,14 @@ lässt `latest/` in Ruhe.
 ## versions.json und gen_versions.py
 
 `versions.json` liegt an der Site-Wurzel, ein Verzeichnis über den
-Versionsverzeichnissen. `scripts/gen_versions.py` pflegt sie aus der
+Versionsverzeichnissen. `script/gen_versions.py` pflegt sie aus der
 einen Stelle, an der die Version ohnehin lebt — `manifest.json`,
 `src/*/_version.py`, eine `DESCRIPTION` oder eine
 `_extensions/*/_extension.yml`, je nachdem, was das Repositorium hat:
 
 ```sh
-python scripts/gen_versions.py            # aktuelle Version eintragen
-python scripts/gen_versions.py --current  # nur ausgeben (das Deploy fragt hier)
+python script/gen_versions.py            # aktuelle Version eintragen
+python script/gen_versions.py --current  # nur ausgeben (das Deploy fragt hier)
 ```
 
 Dass eine neue Version eine Änderung an einer committeten Datei ist,
