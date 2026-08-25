@@ -35,17 +35,23 @@ anderen Sprache. Die unten erzeugte Karte biegt sie auf **die
 
 ## gen_langmap.py
 
-`docs/gen_langmap.py` läuft die beiden Seitenleisten parallel ab und
-schreibt die Seite-zu-Seite-Karte, die Umbiegelogik und den
-Versionsbanner als `theme/scripts.html` in beide Projekte, die es in
-jede Seite einbetten (`include-after-body` kennt die Seitentiefe nicht,
-ein relatives `<script src>` funktionierte also nur von der
-Site-Wurzel — das Einbetten umgeht das).
+`scripts/gen_langmap.py` bekommt die Sprachverzeichnisse als Argumente
+(`gen_langmap.py en de`), läuft deren Seitenleisten parallel ab und
+schreibt die Seite-zu-Seite-Karte samt Umbiegelogik als
+`theme/scripts.html` in jedes Projekt, das sie in jede Seite einbettet
+(`include-after-body` kennt die Seitentiefe nicht, ein relatives
+`<script src>` funktionierte also nur von der Site-Wurzel — das
+Einbetten umgeht das). Die Karte trägt je Seite alle Übersetzungen:
+eine dritte Sprache ist ein weiteres Argument, ein weiteres
+Projektverzeichnis und ein Menüeintrag mehr — am Skript ändert sich
+nichts. `--extra-js` bettet weitere Skripte hinter der Karte ein;
+diese Dokumentation gibt so ihren Versionsbanner
+(`shared/versions.js`) mit.
 
 Die Karte aus den Seitenleisten abzuleiten heißt: Sie kann keiner
 hinzugefügten Seite hinterherhinken. Der Preis ist die Regel, die die
-Prüfung erzwingt: **eine Seite kommt in beide Seitenleisten oder in
-keine** — hören die beiden auf, parallel zu sein, scheitert der Build
+Prüfung erzwingt: **eine Seite kommt in jede Seitenleiste oder in
+keine** — hören sie auf, parallel zu sein, scheitert der Build
 mit einer Meldung, die das sagt, statt dass ein Umschalter Leser still
 auf die falsche Seite schickt.
 

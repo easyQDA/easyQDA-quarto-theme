@@ -33,16 +33,21 @@ page being read**.
 
 ## gen_langmap.py
 
-`docs/gen_langmap.py` walks the two sidebars in parallel and writes the
-page-to-page map, the retargeting logic and the version banner as
-`theme/scripts.html` into both projects, which inline it into every
+`scripts/gen_langmap.py` takes the language directories as arguments
+(`gen_langmap.py en de`), walks their sidebars in parallel and writes
+the page-to-page map plus the retargeting logic as
+`theme/scripts.html` into every project, which inlines it into every
 page (`include-after-body` is depth-blind, so a relative
 `<script src>` would only work from the site root — inlining sidesteps
-that).
+that). The map carries all translations per page, so a third language
+is one more argument, one more project directory and one more menu
+entry — nothing in the script changes. `--extra-js` inlines further
+scripts after the map; this documentation passes its version banner
+(`shared/versions.js`) that way.
 
 Deriving the map from the sidebars means it cannot fall behind a page
 that was added. The cost is the rule the check enforces: **add a page
-to both sidebars or to neither** — if the two sidebars stop being
+to every sidebar or to none** — if the sidebars stop being
 parallel, the build fails with a message saying so, not a switcher
 that silently sends readers to the wrong page.
 
