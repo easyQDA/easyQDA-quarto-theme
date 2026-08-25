@@ -14,10 +14,17 @@ python3 print/make_pdf.py docs/de site/de/Dokumentation.pdf
 
 **Die Kapitelfolge ist die Seitenleisten-Folge.** Das Skript liest die
 `_quarto.yml` des Projekts, nimmt die Seiten der Seitenleiste in ihrer
-Reihenfolge und setzt daraus ein temporäres Quarto-Buch zusammen. Es
-gibt keine zweite Kapitelliste zu pflegen, das PDF kann also keiner
-hinzugefügten Seite hinterherhinken — dasselbe Prinzip wie bei der
-[Sprachkarte](mehrsprachig.qmd).
+Reihenfolge und setzt daraus ein temporäres Quarto-Buch zusammen;
+Abschnitte der obersten Ebene werden Buchteile mit dem
+Abschnittstitel. Es gibt keine zweite Kapitelliste zu pflegen, das PDF
+kann also keiner hinzugefügten Seite hinterherhinken — dasselbe
+Prinzip wie bei der [Sprachkarte](mehrsprachig.qmd).
+
+**Der Umschlag kann nicht von der Site abdriften.** Sein Titel ist
+`website.title`, sein Untertitel kommt aus dem Vorspann der
+`index.qmd` der Sprache (Rückfall: „Dokumentation"). Hält das Projekt
+seine Seitengrafiken in einem `asset/`-Verzeichnis, wird es ins Buch
+kopiert — jede Abbildung der Site erscheint so auch im PDF.
 
 **Die Engine ist Typst**, die in Quarto steckt — keine
 TeX-Installation, weder auf Ihrem Rechner noch in der CI. Das
@@ -30,7 +37,10 @@ Site und sieht überall gleich aus.
 
 Eine Quarto-Eigenheit steht im Skript statt in Ihrem Gedächtnis: Die
 Typst-Buchvorlage verlangt einen `author` und scheitert ohne ihn mit
-einer kryptischen Meldung — das Skript setzt ihn immer.
+einer kryptischen Meldung. Das Skript nimmt ihn als optionales
+drittes Argument oder aus dem `author:` im Vorspann der `index.qmd`
+der Sprache — fehlt beides, scheitert es mit einer Meldung, die beide
+Wege nennt.
 
 ## In eine Site einbauen
 

@@ -14,10 +14,18 @@ python3 print/make_pdf.py docs/en site/en/docs.pdf
 
 **The chapter order is the sidebar order.** The script reads the
 project's `_quarto.yml`, takes the sidebar's pages in sequence and
-assembles a temporary Quarto book from them. There is no second list
-of chapters to maintain, so the PDF cannot fall behind a page that was
-added — the same principle as the
+assembles a temporary Quarto book from them; top-level sidebar
+sections become book parts carrying the section's title. There is no
+second list of chapters to maintain, so the PDF cannot fall behind a
+page that was added — the same principle as the
 [language map](multilingual.qmd).
+
+**The cover cannot drift from the site.** Its title is
+`website.title`, its subtitle comes from the front matter of the
+language's `index.qmd` (falling back to "Documentation"). If the
+project keeps its page graphics in an `asset/` directory, that
+directory is copied into the book, so every figure of the site appears
+in the PDF too.
 
 **The engine is Typst**, which ships inside Quarto — no TeX toolchain
 to install, on your machine or in CI. The table of contents and the
@@ -30,7 +38,9 @@ site and renders the same everywhere.
 
 One Quarto quirk is codified in the script rather than in your memory:
 the Typst book template requires an `author` and fails with a cryptic
-error without one — the script always sets it.
+error without one. The script takes it as an optional third argument
+or from the `author:` in the language's `index.qmd` front matter, and
+fails with a message naming both options when neither is set.
 
 ## Wiring it into a site
 
