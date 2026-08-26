@@ -30,14 +30,14 @@ daneben und verweisen Sie `_extension.yml` darauf. Die Variablen, die
 eine Palette tatsächlich setzt, mit den hellen Auslieferungswerten:
 
 ```scss
-$zq-accent:     #3f51b5;   // Indigo — aktive Marker, Links
-$zq-accent-ink: #3547a8;   // etwas tiefer, für Links auf Weiß
-$zq-ink:        #212630;   // Fließtext
-$zq-muted:      #5d6572;   // Seitenleisten, Fußzeile
-$zq-surface:    #f5f6f8;   // Codeblöcke, Banner
-$zq-border:     #e5e7eb;
-$zq-navbar-bg:  #ffffff;   // Milchglas-Kopfzeile (80 % Deckung angewandt)
-$zq-pill:       rgba(63, 81, 181, 0.10);  // die Pille der aktiven Seite
+$eq-accent:     #3f51b5;   // Indigo — aktive Marker, Links
+$eq-accent-ink: #3547a8;   // etwas tiefer, für Links auf Weiß
+$eq-ink:        #212630;   // Fließtext
+$eq-muted:      #5d6572;   // Seitenleisten, Fußzeile
+$eq-surface:    #f5f6f8;   // Codeblöcke, Banner
+$eq-border:     #e5e7eb;
+$eq-navbar-bg:  #ffffff;   // Milchglas-Kopfzeile (80 % Deckung angewandt)
+$eq-pill:       rgba(63, 81, 181, 0.10);  // die Pille der aktiven Seite
 ```
 
 Die Paletten bilden zusätzlich eine Handvoll

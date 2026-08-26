@@ -30,14 +30,14 @@ Edit the palette files, or add your own pair next to them and point
 the light values as they ship:
 
 ```scss
-$zq-accent:     #3f51b5;   // indigo — active markers, links
-$zq-accent-ink: #3547a8;   // slightly deeper, for links on white
-$zq-ink:        #212630;   // body text
-$zq-muted:      #5d6572;   // sidebars, footer
-$zq-surface:    #f5f6f8;   // code blocks, banners
-$zq-border:     #e5e7eb;
-$zq-navbar-bg:  #ffffff;   // frosted header (80% opacity applied)
-$zq-pill:       rgba(63, 81, 181, 0.10);  // the active-page pill
+$eq-accent:     #3f51b5;   // indigo — active markers, links
+$eq-accent-ink: #3547a8;   // slightly deeper, for links on white
+$eq-ink:        #212630;   // body text
+$eq-muted:      #5d6572;   // sidebars, footer
+$eq-surface:    #f5f6f8;   // code blocks, banners
+$eq-border:     #e5e7eb;
+$eq-navbar-bg:  #ffffff;   // frosted header (80% opacity applied)
+$eq-pill:       rgba(63, 81, 181, 0.10);  // the active-page pill
 ```
 
 The palettes also map a handful of Quarto/Bootstrap variables
