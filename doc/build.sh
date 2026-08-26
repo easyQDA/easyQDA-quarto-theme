@@ -54,6 +54,6 @@ python3 ../offline/postprocess.py ../site/en ../site/de
 
 # The same pages once more as one linked PDF per language (Typst, Noto
 # Sans embedded), downloadable via the navbar's PDF icon.
-"$GEN_PY" ../print/make_pdf.py en ../site/en/zotqda-theme-documentation.pdf fre.ms
-"$GEN_PY" ../print/make_pdf.py de ../site/de/zotqda-theme-Dokumentation.pdf fre.ms
+"$GEN_PY" ../print/make_pdf.py en ../site/en/easyqda-theme-documentation.pdf fre.ms
+"$GEN_PY" ../print/make_pdf.py de ../site/de/easyqda-theme-Dokumentation.pdf fre.ms
 echo "Done: open ../site/en/index.html"

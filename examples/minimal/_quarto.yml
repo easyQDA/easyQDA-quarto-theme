@@ -6,7 +6,7 @@ project:
 lang: en
 
 website:
-  title: zotqda-theme example
+  title: easyqda-theme example
   navbar:
     search: true
     pinned: true
@@ -17,4 +17,4 @@ website:
         href: index.qmd
 
 format:
-  zotqda-theme-html: default
+  easyqda-theme-html: default

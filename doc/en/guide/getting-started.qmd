@@ -23,7 +23,7 @@ Then select the format in `_quarto.yml`:
 
 ```yaml
 format:
-  zotqda-theme-html: default
+  easyqda-theme-html: default
 ```
 
 The format brings `toc`, `code-copy`, the light/dark theme pair and an
@@ -40,7 +40,7 @@ project:
   resources:
     - fonts/
 format:
-  zotqda-theme-html:
+  easyqda-theme-html:
     css: fonts/noto.css
 ```
 

@@ -4,8 +4,8 @@ title: "Aufbau des Repositoriums"
 
 
 ```
-_extensions/zotqda-theme/   das Format: _extension.yml, zotqda.scss
-                            (alle Regeln), zotqda-light/-dark.scss
+_extensions/easyqda-theme/   das Format: _extension.yml, easyqda.scss
+                            (alle Regeln), easyqda-light/-dark.scss
                             (nur Paletten)
 fonts/                      Noto-Sans-woff2-Subsets + noto.css (SIL OFL 1.1)
 offline/postprocess.py      die drei Offline-Reparaturen, laut bei Drift

@@ -38,7 +38,7 @@ erkannte Reparatur zu überspringen.
 
 ## Eine Theme-Version veröffentlichen
 
-Die Version lebt in `_extensions/zotqda-theme/_extension.yml`. Jede
+Die Version lebt in `_extensions/easyqda-theme/_extension.yml`. Jede
 substanzielle Änderung erhöht sie — die vendorten Kopien der Nutzer und
 der [Versions-Umschalter](../guide/versionen.qmd) dieser Site hängen an
 Releases, zwei verschiedene Stände des Themes dürfen sich also nie eine
@@ -53,7 +53,7 @@ Nummer teilen.
 ## Die Übersteuerungen mit Gewicht
 
 Einige Regeln nutzen `!important` oder erhöhte Spezifität, jede in
-`zotqda.scss` an Ort und Stelle kommentiert: Quarto nagelt die Breite
+`easyqda.scss` an Ort und Stelle kommentiert: Quarto nagelt die Breite
 der Seitenleisten-Einträge fest (die Pille braucht
 `width: calc(100% + …)` plus `flex-shrink: 0`), und die Zustandsregeln
 des Farbschema-Schalters wiegen schwerer als die Basisregel (der

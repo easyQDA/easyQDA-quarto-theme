@@ -9,14 +9,14 @@ colours — touches one small file and nothing else.
 ## Where things live
 
 ```
-_extensions/zotqda-theme/
+_extensions/easyqda-theme/
 ├── _extension.yml       the format: theme pair, highlight pair, defaults
-├── zotqda.scss          shared defaults and ALL rules
-├── zotqda-light.scss    light palette — colours only
-└── zotqda-dark.scss     dark palette — colours only
+├── easyqda.scss          shared defaults and ALL rules
+├── easyqda-light.scss    light palette — colours only
+└── easyqda-dark.scss     dark palette — colours only
 ```
 
-`zotqda.scss` carries every structural rule (header, grid, sidebars,
+`easyqda.scss` carries every structural rule (header, grid, sidebars,
 pills, callouts) written against SCSS variables with `!default`
 values. The palette files override those variables and contribute no
 rules. Order matters and is codified in `_extension.yml`: in Quarto's
@@ -42,7 +42,7 @@ $zq-pill:       rgba(63, 81, 181, 0.10);  // the active-page pill
 
 The palettes also map a handful of Quarto/Bootstrap variables
 (`$body-bg`, `$link-color`, `$code-bg`, …) onto those. Everything else
-falls back to the shared defaults in `zotqda.scss`.
+falls back to the shared defaults in `easyqda.scss`.
 
 ## Your logo instead of the book
 
@@ -71,5 +71,5 @@ of the format. The zotQDA sites add only `fonts/noto.css` this way.
 One caution: the rules layer targets Quarto's HTML classes, and a few
 rules carry `!important` or raised specificity because Quarto's own
 rules would otherwise win. If an override of yours seems to do
-nothing, look at those first — each is commented in `zotqda.scss`
+nothing, look at those first — each is commented in `easyqda.scss`
 where it happens.

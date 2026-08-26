@@ -7,7 +7,7 @@ The layout you are reading: a centred grid of at most 76rem, three
 columns on wide screens — navigation, content, table of contents. The
 header stays pinned while you scroll, and content disappears behind it
 as behind frosted glass rather than a hard edge. All of it lives in one
-rules file, `_extensions/zotqda-theme/zotqda.scss`; the two palette
+rules file, `_extensions/easyqda-theme/easyqda.scss`; the two palette
 files contribute colours and nothing else.
 
 ## The header

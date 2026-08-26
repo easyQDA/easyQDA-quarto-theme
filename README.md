@@ -23,7 +23,7 @@ then select the format in `_quarto.yml`:
 
 ```yaml
 format:
-  zotqda-theme-html: default
+  easyqda-theme-html: default
 ```
 
 The format brings `toc`, `code-copy`, the light/dark pair and an
@@ -38,7 +38,7 @@ project:
   resources:
     - fonts/
 format:
-  zotqda-theme-html:
+  easyqda-theme-html:
     css: fonts/noto.css
 ```
 
@@ -123,9 +123,9 @@ are templates for a documentation site's own publish workflow.
 
 ## Files
 
-- `_extensions/zotqda-theme/` — the format: `_extension.yml`,
-  `zotqda.scss` (shared defaults and all rules), `zotqda-light.scss` /
-  `zotqda-dark.scss` (palettes only)
+- `_extensions/easyqda-theme/` — the format: `_extension.yml`,
+  `easyqda.scss` (shared defaults and all rules), `easyqda-light.scss` /
+  `easyqda-dark.scss` (palettes only)
 - `fonts/` — Noto Sans woff2 subsets + `noto.css` (SIL OFL 1.1)
 - `offline/postprocess.py` — the three offline repairs, loud on drift
 - `offline/smoketest.py` — the headless-browser proof
@@ -143,7 +143,7 @@ The rules layer targets Quarto's HTML classes (`.sidebar-item-text`,
 practice but not a documented contract — the pin plus the smoketest is
 the answer, an eyeball on one page after upgrades is still wise. Three
 overrides need `!important` or extra specificity because Quarto's own
-rules carry weight; each is commented in `zotqda.scss` where it
+rules carry weight; each is commented in `easyqda.scss` where it
 happens.
 
 ## Licence

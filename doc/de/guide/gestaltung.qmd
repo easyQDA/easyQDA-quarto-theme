@@ -8,7 +8,7 @@ Das Layout, das Sie gerade lesen: ein zentriertes Raster von höchstens
 Inhaltsverzeichnis. Die Kopfzeile bleibt beim Scrollen stehen, und der
 Inhalt verschwindet dahinter wie hinter Milchglas statt an einer harten
 Kante. All das lebt in einer Regeldatei,
-`_extensions/zotqda-theme/zotqda.scss`; die beiden Palettendateien
+`_extensions/easyqda-theme/easyqda.scss`; die beiden Palettendateien
 steuern Farben bei und sonst nichts.
 
 ## Die Kopfzeile

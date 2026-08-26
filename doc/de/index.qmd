@@ -31,7 +31,7 @@ quarto add easyqda/easyQDA-quarto-theme
 
 ```yaml
 format:
-  zotqda-theme-html: default
+  easyqda-theme-html: default
 ```
 
 ## Wie es weitergeht

@@ -4,8 +4,8 @@ title: "Repository layout"
 
 
 ```
-_extensions/zotqda-theme/   the format: _extension.yml, zotqda.scss
-                            (all rules), zotqda-light/-dark.scss
+_extensions/easyqda-theme/   the format: _extension.yml, easyqda.scss
+                            (all rules), easyqda-light/-dark.scss
                             (palettes only)
 fonts/                      Noto Sans woff2 subsets + noto.css (SIL OFL 1.1)
 offline/postprocess.py      the three offline repairs, loud on drift

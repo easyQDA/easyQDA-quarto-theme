@@ -9,14 +9,14 @@ Struktur, andere Farben — eine kleine Datei berührt und sonst nichts.
 ## Wo was liegt
 
 ```
-_extensions/zotqda-theme/
+_extensions/easyqda-theme/
 ├── _extension.yml       das Format: Theme-Paar, Highlight-Paar, Vorgaben
-├── zotqda.scss          gemeinsame Vorgaben und ALLE Regeln
-├── zotqda-light.scss    helle Palette — nur Farben
-└── zotqda-dark.scss     dunkle Palette — nur Farben
+├── easyqda.scss          gemeinsame Vorgaben und ALLE Regeln
+├── easyqda-light.scss    helle Palette — nur Farben
+└── easyqda-dark.scss     dunkle Palette — nur Farben
 ```
 
-`zotqda.scss` trägt jede Strukturregel (Kopfzeile, Raster,
+`easyqda.scss` trägt jede Strukturregel (Kopfzeile, Raster,
 Seitenleisten, Pillen, Callouts), geschrieben gegen SCSS-Variablen.
 Die Palettendateien überschreiben diese Variablen und steuern keine
 Regeln bei. Die Reihenfolge zählt und ist in `_extension.yml`
@@ -43,7 +43,7 @@ $zq-pill:       rgba(63, 81, 181, 0.10);  // die Pille der aktiven Seite
 Die Paletten bilden zusätzlich eine Handvoll
 Quarto-/Bootstrap-Variablen (`$body-bg`, `$link-color`, `$code-bg`, …)
 darauf ab. Alles Übrige fällt auf die gemeinsamen Vorgaben in
-`zotqda.scss` zurück.
+`easyqda.scss` zurück.
 
 ## Ihr Logo statt des Buches
 
@@ -74,5 +74,5 @@ nur `fonts/noto.css`.
 Eine Vorsicht: Die Regelschicht zielt auf Quartos HTML-Klassen, und
 einige Regeln tragen `!important` oder erhöhte Spezifität, weil Quartos
 eigene Regeln sonst gewännen. Scheint eine Ihrer Übersteuerungen nichts
-zu bewirken, schauen Sie zuerst dort nach — jede ist in `zotqda.scss`
+zu bewirken, schauen Sie zuerst dort nach — jede ist in `easyqda.scss`
 an Ort und Stelle kommentiert.

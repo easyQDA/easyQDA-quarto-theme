@@ -9,7 +9,7 @@ project:
 lang: en
 
 website:
-  title: zotQDA Theme
+  title: easyQDA Theme
   site-url: https://theme.zotqda.org/latest/en/
   repo-url: https://github.com/easyqda/easyQDA-quarto-theme
   navbar:
@@ -22,7 +22,7 @@ website:
       # print/make_pdf.py during the site build.
       - icon: file-pdf
         aria-label: PDF
-        href: zotqda-theme-documentation.pdf
+        href: easyqda-theme-documentation.pdf
       - icon: translate
         aria-label: Language
         menu:
@@ -75,6 +75,6 @@ website:
       [Privacy](https://theme.zotqda.org/latest/en/privacy.html)
 
 format:
-  zotqda-theme-html:
+  easyqda-theme-html:
     css: fonts/noto.css
     include-after-body: theme/scripts.html
