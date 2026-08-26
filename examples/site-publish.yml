@@ -18,7 +18,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      QUARTO_VERSION: "1.9.38"   # keep equal to the build script's pin
+      QUARTO_VERSION: "1.10.18"   # keep equal to the build script's pin
     steps:
       - uses: actions/checkout@v4
 

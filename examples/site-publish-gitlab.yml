@@ -17,7 +17,7 @@
 # release on github.com. Filling the registry once (from a machine
 # with internet access, <TOKEN> with scope api):
 #
-#   V=1.9.38
+#   V=1.10.18
 #   curl -fsSLO "https://github.com/quarto-dev/quarto-cli/releases/download/v$V/quarto-$V-linux-amd64.deb"
 #   curl --header "PRIVATE-TOKEN: <TOKEN>" \
 #        --upload-file "quarto-$V-linux-amd64.deb" \
@@ -31,7 +31,7 @@ image: ubuntu:24.04
 
 variables:
   # Keep equal to the pin in build.sh; upgrades are deliberate events.
-  QUARTO_VERSION: "1.9.38"
+  QUARTO_VERSION: "1.10.18"
   DEBIAN_FRONTEND: noninteractive
 
 pages:

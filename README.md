@@ -113,7 +113,7 @@ the site root.
 ## Pin your Quarto version
 
 Both the styling rules and the offline repairs are written against a
-concrete Quarto version (currently **1.9.38**, see the CI workflow).
+concrete Quarto version (currently **1.10.18**, see the CI workflow).
 Pin it in your build, and treat upgrades as deliberate events: render,
 run the smoketest, look at one site, then move the pin. This
 repository's CI does exactly that with `examples/minimal/`;

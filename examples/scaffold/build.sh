@@ -19,7 +19,7 @@ AUTHOR="Jane Doe"                                        # ← adapt
 # Quarto is pinned; upgrades are deliberate events (build with
 # ALLOW_UNPINNED_QUARTO=1, run the smoketest, eyeball a page, then
 # move the pin). Keep equal to QUARTO_VERSION in the CI config.
-PINNED="1.9.38"
+PINNED="1.10.18"
 ACTUAL="$(quarto --version)"
 if [ "$ACTUAL" != "$PINNED" ] && [ -z "$ALLOW_UNPINNED_QUARTO" ]; then
   echo "build.sh: quarto is $ACTUAL, pinned is $PINNED" >&2

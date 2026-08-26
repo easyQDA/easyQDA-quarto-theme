@@ -53,14 +53,14 @@ Anfrage.
 ## Die Quarto-Version festnageln
 
 Gestaltungsregeln wie Offline-Reparaturen sind gegen eine konkrete
-Quarto-Version geschrieben — derzeit **1.9.38**. Nageln Sie sie in
+Quarto-Version geschrieben — derzeit **1.10.18**. Nageln Sie sie in
 Ihrem Build-Skript fest und behandeln Sie Upgrades als bewusste
 Ereignisse; [Wartung und Quarto-Pin](../dev/wartung.qmd) beschreibt das
 Vorgehen. Das Build-Skript dieser Dokumentation verweigert jede andere
 Version, solange man es nicht ausdrücklich anders anweist:
 
 ```sh
-PINNED="1.9.38"
+PINNED="1.10.18"
 ACTUAL="$(quarto --version)"
 if [ "$ACTUAL" != "$PINNED" ] && [ -z "$ALLOW_UNPINNED_QUARTO" ]; then
   echo "quarto is $ACTUAL, pinned is $PINNED" >&2

@@ -51,14 +51,14 @@ font stack — still without any external request.
 ## Pin your Quarto version
 
 Both the styling rules and the offline repairs are written against a
-concrete Quarto version — currently **1.9.38**. Pin it in your build
+concrete Quarto version — currently **1.10.18**. Pin it in your build
 script and treat upgrades as deliberate events;
 [Maintenance and the Quarto pin](../dev/maintenance.qmd) describes the
 procedure. The build script of this documentation refuses to run with
 any other version unless explicitly told to:
 
 ```sh
-PINNED="1.9.38"
+PINNED="1.10.18"
 ACTUAL="$(quarto --version)"
 if [ "$ACTUAL" != "$PINNED" ] && [ -z "$ALLOW_UNPINNED_QUARTO" ]; then
   echo "quarto is $ACTUAL, pinned is $PINNED" >&2

@@ -14,7 +14,7 @@ jobs:
   render-and-smoke:
     runs-on: ubuntu-latest
     env:
-      QUARTO_VERSION: "1.9.38"   # move together with the sites' pins
+      QUARTO_VERSION: "1.10.18"   # move together with the sites' pins
     steps:
       - uses: actions/checkout@v4
 
@@ -50,7 +50,7 @@ jobs:
 
       - uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: "1.9.38"   # keep equal to doc/build.sh's pin
+          version: "1.10.18"   # keep equal to doc/build.sh's pin
 
       - name: Build the site
         run: |

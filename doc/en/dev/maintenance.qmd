@@ -10,7 +10,7 @@ The theme's rules target Quarto's HTML classes
 and the offline repairs match exact strings in Quarto's generated
 output. Both are stable in practice, neither is a documented contract.
 The honest consequence: the theme is written against a concrete Quarto
-version — currently **1.9.38** — and everything downstream pins it:
+version — currently **1.10.18** — and everything downstream pins it:
 this repository's CI, the qdaPy and qdaR build scripts, their CI
 workflows.
 

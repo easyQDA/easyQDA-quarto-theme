@@ -10,7 +10,7 @@ Die Regeln des Themes zielen auf Quartos HTML-Klassen
 und die Offline-Reparaturen passen auf exakte Zeichenketten in Quartos
 erzeugter Ausgabe. Beides ist in der Praxis stabil, beides ist kein
 dokumentierter Vertrag. Die ehrliche Konsequenz: Das Theme ist gegen
-eine konkrete Quarto-Version geschrieben — derzeit **1.9.38** — und
+eine konkrete Quarto-Version geschrieben — derzeit **1.10.18** — und
 alles stromabwärts nagelt sie fest: die CI dieses Repositoriums, die
 Build-Skripte von qdaPy und qdaR, deren CI-Workflows.
 
