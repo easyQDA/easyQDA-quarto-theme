@@ -133,7 +133,7 @@ Datenschutzerklärung, auf die wir keinen Einfluss haben.
 
 ## Die Software selbst verarbeitet nichts für uns
 
-Das zotqda-quarto-theme ist eine Quarto-Erweiterung und läuft beim Bauen
+Das easyQDA-quarto-theme ist eine Quarto-Erweiterung und läuft beim Bauen
 Ihrer Website auf Ihrem Rechner. Es sendet keine Daten an uns oder an
 Dritte: keine Nutzungsstatistik, keine Fehlerberichte, keine Abfrage bei
 einem von uns betriebenen Dienst. Auch die Websites, die es gestaltet,

@@ -1,5 +1,5 @@
 ---
-title: "zotqda-quarto-theme"
+title: "easyQDA-quarto-theme"
 ---
 
 
@@ -23,7 +23,7 @@ sites — [qdaPy](https://qdapy.zotqda.org) and
 generic enough for any documentation site with the same needs.
 
 ```sh
-quarto add fre-ms/zotqda-quarto-theme
+quarto add easyqda/easyQDA-quarto-theme
 ```
 
 ```yaml

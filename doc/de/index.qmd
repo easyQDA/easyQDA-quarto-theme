@@ -1,5 +1,5 @@
 ---
-title: "zotqda-quarto-theme"
+title: "easyQDA-quarto-theme"
 ---
 
 
@@ -26,7 +26,7 @@ allgemein genug für jede Dokumentations-Site mit denselben
 Bedürfnissen.
 
 ```sh
-quarto add fre-ms/zotqda-quarto-theme
+quarto add easyqda/easyQDA-quarto-theme
 ```
 
 ```yaml

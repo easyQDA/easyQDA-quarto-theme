@@ -31,7 +31,7 @@ mysite/
 │   └── references.bib    # one bibliography; build.sh symlinks it
 │                         #   into each language project
 ├── root/index.html       # language switch at the site root (from here)
-└── _extensions/          # `quarto add fre-ms/zotqda-quarto-theme`
+└── _extensions/          # `quarto add easyqda/easyQDA-quarto-theme`
 ```
 
 The four theme scripts are copied **unchanged**: they find their

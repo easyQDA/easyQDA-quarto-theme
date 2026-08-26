@@ -8,7 +8,7 @@ title: "Erste Schritte"
 Zwei Wege hinein. Der Quarto-Weg:
 
 ```sh
-quarto add fre-ms/zotqda-quarto-theme
+quarto add easyqda/easyQDA-quarto-theme
 ```
 
 Oder der Weg der zotQDA-Sites — **das Theme einvendoren**: Kopieren Sie

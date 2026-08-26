@@ -1,4 +1,4 @@
-# zotqda-quarto-theme
+# easyQDA-quarto-theme
 
 A Quarto website theme with one distinctive property: the built site
 keeps working when it is opened from a plain file tree — `file://`, or
@@ -16,7 +16,7 @@ enough for any documentation site with the same needs.
 ## Install
 
 ```sh
-quarto add fre-ms/zotqda-quarto-theme
+quarto add easyqda/easyQDA-quarto-theme
 ```
 
 then select the format in `_quarto.yml`:

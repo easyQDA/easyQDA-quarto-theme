@@ -8,7 +8,7 @@ title: "Getting started"
 Two ways in. The Quarto way:
 
 ```sh
-quarto add fre-ms/zotqda-quarto-theme
+quarto add easyqda/easyQDA-quarto-theme
 ```
 
 Or the way the zotQDA sites do it — **vendor the theme**: copy

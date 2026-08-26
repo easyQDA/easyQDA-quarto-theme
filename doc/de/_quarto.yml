@@ -11,7 +11,7 @@ lang: de
 website:
   title: zotQDA Theme
   site-url: https://theme.zotqda.org/latest/de/
-  repo-url: https://github.com/fre-ms/zotqda-quarto-theme
+  repo-url: https://github.com/easyqda/easyQDA-quarto-theme
   navbar:
     search: true
     pinned: true
@@ -33,7 +33,7 @@ website:
       # The theme moves this item over the right sidebar.
       - icon: github
         text: GitHub
-        href: https://github.com/fre-ms/zotqda-quarto-theme
+        href: https://github.com/easyqda/easyQDA-quarto-theme
   sidebar:
     style: docked
     collapse-level: 3

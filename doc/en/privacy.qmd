@@ -131,7 +131,7 @@ privacy policy applies, over which we have no influence.
 
 ## The software itself processes nothing for us
 
-zotqda-quarto-theme is a Quarto extension and runs on your own machine
+easyQDA-quarto-theme is a Quarto extension and runs on your own machine
 while your site is built. It sends no data to us or to anyone else: no
 usage statistics, no error reports, no request to any service we operate.
 The websites it styles load nothing from third-party servers either —

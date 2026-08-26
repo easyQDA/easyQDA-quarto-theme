@@ -100,11 +100,11 @@ Felix Müller-Sarnowski, Anschrift wie oben.
 
 Der Verein betreibt diese Website. **Die hier vorgestellte Software ist kein
 Werk des Vereins.** Urheber und alleiniger Inhaber der Rechte an zotQDA, qdaZ,
-qdaPy, qdaR und dem zotqda-quarto-theme ist Felix Müller-Sarnowski, der sie unter dem Namen *fre.ms*
+qdaPy, qdaR und dem easyQDA-quarto-theme ist Felix Müller-Sarnowski, der sie unter dem Namen *fre.ms*
 veröffentlicht.
 
 Der Verein erwirbt keine Rechte an der Software, vertreibt sie nicht und
-erhält keine Einnahmen aus ihr. Das hier vorgestellte zotqda-quarto-theme
+erhält keine Einnahmen aus ihr. Das hier vorgestellte easyQDA-quarto-theme
 steht unter der MIT-Lizenz; die mitgelieferte Schrift Noto Sans steht unter
 der SIL Open Font License 1.1, das beigelegte MathJax unter Apache 2.0. Fragen zur Software gehen an
 <fre.ms@fre.ms>, Fragen zur Website an <sekretariat@akademische-gesellschaft.de>.
