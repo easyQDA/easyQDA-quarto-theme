@@ -41,12 +41,13 @@ import yaml
 
 def fonts_dir():
     # The Noto Sans TTFs sit beside this script in the theme repository
-    # (print/fonts/); a site that vendors the script into code/ keeps
-    # them under asset/fonts/ttf instead (excluded from publishing —
-    # the woff2 subsets serve the website). Both layouts work
-    # unpatched.
+    # (print/font/, and print/fonts/ in checkouts made before it was
+    # renamed); a site that vendors the script into code/ keeps them under
+    # asset/fonts/ttf instead (excluded from publishing — the woff2 subsets
+    # serve the website). All three layouts work unpatched.
     here = Path(__file__).resolve().parent
-    for cand in (here / "fonts", here.parent / "asset" / "fonts" / "ttf"):
+    for cand in (here / "font", here / "fonts",
+                 here.parent / "asset" / "fonts" / "ttf"):
         if cand.is_dir():
             return cand
     raise SystemExit(f"make_pdf: no font directory (looked beside {here} "
