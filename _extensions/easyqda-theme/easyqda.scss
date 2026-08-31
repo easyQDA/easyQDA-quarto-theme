@@ -4,7 +4,7 @@
 // easyqda-dark.scss defines the $eq-* variables first).
 
 // Noto Sans, self-hosted: the host site ships the woff2 files and
-// fonts/noto.css (see the extension's fonts/ directory) — no font
+// font/noto.css (see the repository's font/ directory) — no font
 // request ever leaves the page, which the bundled, consent-free help
 // requires. Sites without the fonts fall back to the system stack.
 $font-family-sans-serif: "Noto Sans", system-ui, -apple-system,
@@ -164,6 +164,29 @@ h1, .title {
 
 #title-block-header {
   margin-block-end: 1.6rem;
+}
+
+// The description from a page's front matter, set as a standfirst.
+//
+// Quarto already writes it into the title block, but leaves it looking
+// exactly like the first paragraph of the page — so a sentence meant to say
+// what the page is for reads as prose that repeats itself. It is set apart
+// the way a deck is set apart in print: a size up from the body, a tone
+// down from it, and a hairline closing the block off from the text proper.
+//
+// Not bold. A whole paragraph in bold competes with the heading above it
+// and asks to be read twice as loudly as it deserves; weight is for words
+// inside a sentence, and this is a sentence beside a title.
+#title-block-header .description {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: $eq-muted;
+  max-width: 46rem;
+  margin-block: 0.4rem 0;
+  padding-block-end: 1.15rem;
+  // On the .description itself, so a page carrying none is closed off by
+  // nothing rather than by a rule under its bare title
+  border-block-end: 1px solid $eq-border;
 }
 
 h2 {
