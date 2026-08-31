@@ -15,8 +15,8 @@ mysite/
 │                         #   parallel sidebars (gen_langmap checks this)
 ├── asset/                # the single copy of every resource; build.sh
 │   │                     #   mirrors it into each language project
-│   ├── fonts/            # ← theme fonts/ (woff2 + noto.css)
-│   │   └── ttf/          # ← theme print/fonts (PDF only; the mirror
+│   ├── font/             # ← theme font/ (woff2 + noto.css)
+│   │   └── ttf/          # ← theme print/font (PDF only; the mirror
 │   │                     #   excludes it from the published site)
 │   ├── offline/mathjax/  # ← theme offline/mathjax
 │   ├── generiert/        # written by `make asset`, gitignored

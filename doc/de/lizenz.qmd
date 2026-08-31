@@ -14,7 +14,7 @@ Zwei fremde Werke liegen bei, unter ihren eigenen Bedingungen:
 
 | Bestandteil | Lizenz | Wo |
 |---|---|---|
-| Noto Sans (woff2-Subsets und TTFs) | SIL Open Font License 1.1 | `fonts/OFL.txt` |
+| Noto Sans (woff2-Subsets und TTFs) | SIL Open Font License 1.1 | `font/OFL.txt` |
 | MathJax (beigelegter Build) | Apache License 2.0 | `offline/mathjax/LICENSE` |
 
 Beide Lizenzen erlauben die Weitergabe als Teil Ihrer Site; lassen Sie

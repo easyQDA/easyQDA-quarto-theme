@@ -24,16 +24,16 @@ jobs:
 
       - name: Render the example with the theme
         run: |
-          cp -r _extensions examples/minimal/
-          quarto render examples/minimal
+          cp -r _extensions example/minimal/
+          quarto render example/minimal
 
       - name: Offline repairs
-        run: python3 offline/postprocess.py examples/minimal/_site
+        run: python3 offline/postprocess.py example/minimal/_site
 
       - name: Smoke test in a headless browser
         env:
           QDA_SMOKE_BROWSER: google-chrome
-        run: python3 offline/smoketest.py examples/minimal/_site
+        run: python3 offline/smoketest.py example/minimal/_site
 
   documentation:
     # The documentation site (doc/en + doc/de) dogfoods the theme: it

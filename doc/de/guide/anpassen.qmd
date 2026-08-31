@@ -69,7 +69,7 @@ Site-SCSS:
 Alles Seiten- oder Site-Spezifische gehört in die Site, nicht ins
 Theme: Quarto legt `css:`- und `theme:`-Ergänzungen aus der
 `_quarto.yml` über das Format. Die zotQDA-Sites ergänzen auf diesem Weg
-nur `fonts/noto.css`.
+nur `font/noto.css`.
 
 Eine Vorsicht: Die Regelschicht zielt auf Quartos HTML-Klassen, und
 einige Regeln tragen `!important` oder erhöhte Spezifität, weil Quartos

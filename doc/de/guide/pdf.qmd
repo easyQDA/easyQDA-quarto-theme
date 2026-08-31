@@ -32,7 +32,7 @@ Inhaltsverzeichnis und die Zitate sind klickbare Verweise, und nutzt
 die Site eine Bibliografie, werden die Literaturlisten der Einzelseiten
 entfernt und eine Bibliografie steht am Ende des Buches.
 
-**Noto Sans wird eingebettet**, aus `print/fonts/` — das PDF passt zur
+**Noto Sans wird eingebettet**, aus `print/font/` — das PDF passt zur
 Site und sieht überall gleich aus.
 
 Eine Quarto-Eigenheit steht im Skript statt in Ihrem Gedächtnis: Die

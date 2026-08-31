@@ -1,7 +1,7 @@
 # Template for a site on this theme published via GitLab Pages —
 # the GitLab (CE) counterpart of site-publish.yml. Not active in this
 # repository. Copy into the site's repo as .gitlab-ci.yml and adapt
-# the marked spots. Assumes the scaffold layout (examples/scaffold/):
+# the marked spots. Assumes the scaffold layout (example/scaffold/):
 # ./build.sh as the single entry point, output in public/.
 #
 # The job is named `pages`; its public/ artifact is what the Pages

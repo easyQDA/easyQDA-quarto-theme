@@ -5,7 +5,7 @@ on:
     branches: [master, main]
     # theme changes rebuild the site too: the format and the fonts are
     # mirrored from the repository root into both language projects
-    paths: ["doc/**", "doc-root/**", "_extensions/**", "fonts/**",
+    paths: ["doc/**", "doc-root/**", "_extensions/**", "font/**",
             "offline/**", "print/**", ".github/workflows/docs.yml"]
   workflow_dispatch:
 

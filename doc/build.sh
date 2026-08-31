@@ -36,12 +36,12 @@ GEN_PY="${GEN_PY:-$HOME/.venvs/qdapy-docs/bin/python}"
 command -v "$GEN_PY" >/dev/null 2>&1 || GEN_PY=python3
 
 # This repository IS the theme: the single copy of _extensions/ and
-# fonts/ lives at the repository root, and each language project gets a
+# font/ lives at the repository root, and each language project gets a
 # disposable mirror before the render, because Quarto only resolves
 # extensions and resources inside a project directory.
 for lang in $LANGS; do
   rsync -a --delete ../_extensions/ "$lang/_extensions/"
-  rsync -a --delete ../fonts/ "$lang/fonts/"
+  rsync -a --delete ../font/ "$lang/font/"
 done
 
 # Quarto does not clear removed pages from the output dir; without a

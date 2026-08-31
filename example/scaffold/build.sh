@@ -62,8 +62,8 @@ GEN_PY="${GEN_PY:-python3}"
 # extensions and resources only inside a project directory.
 for lang in $LANGS; do
   rsync -a --delete _extensions/ "$lang/_extensions/"
-  # fonts/ttf serves only the PDF (make_pdf.py) — do not publish it
-  rsync -a --delete --exclude=/fonts/ttf asset/ "$lang/asset/"
+  # font/ttf serves only the PDF (make_pdf.py) — do not publish it
+  rsync -a --delete --exclude=/font/ttf asset/ "$lang/asset/"
   # a symlink instead of a copy: one file stays the one source
   ln -sf ../data/references.bib "$lang/references.bib"
 done

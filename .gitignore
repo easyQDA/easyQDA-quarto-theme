@@ -1,18 +1,18 @@
 .DS_Store
-/examples/minimal/_site/
-/examples/minimal/_extensions/
-/examples/minimal/.quarto/
+/example/minimal/_site/
+/example/minimal/_extensions/
+/example/minimal/.quarto/
 
 # the rendered documentation; rebuilt by doc/build.sh and published by
 # docs.yml under a version directory on theme.zotqda.org
 /site/
 
-# per-language mirrors of the repository-root _extensions/ and fonts/,
+# per-language mirrors of the repository-root _extensions/ and font/,
 # recreated by doc/build.sh on every run
 /doc/en/_extensions/
 /doc/de/_extensions/
-/doc/en/fonts/
-/doc/de/fonts/
+/doc/en/font/
+/doc/de/font/
 /doc/en/theme/
 /doc/de/theme/
 __pycache__/

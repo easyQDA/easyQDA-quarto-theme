@@ -33,7 +33,7 @@ citations are clickable links, and if the site uses a bibliography,
 per-page reference lists are stripped and one bibliography sits at the
 end of the book.
 
-**Noto Sans is embedded** from `print/fonts/`, so the PDF matches the
+**Noto Sans is embedded** from `print/font/`, so the PDF matches the
 site and renders the same everywhere.
 
 One Quarto quirk is codified in the script rather than in your memory:

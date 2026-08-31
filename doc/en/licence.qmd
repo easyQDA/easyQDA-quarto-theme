@@ -13,7 +13,7 @@ Two third-party works ship with it, under their own terms:
 
 | Component | Licence | Where |
 |---|---|---|
-| Noto Sans (woff2 subsets and TTFs) | SIL Open Font License 1.1 | `fonts/OFL.txt` |
+| Noto Sans (woff2 subsets and TTFs) | SIL Open Font License 1.1 | `font/OFL.txt` |
 | MathJax (vendored build) | Apache License 2.0 | `offline/mathjax/LICENSE` |
 
 Both licences permit redistribution as part of your site; keep the

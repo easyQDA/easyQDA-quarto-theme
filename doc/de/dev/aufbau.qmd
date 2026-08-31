@@ -7,14 +7,14 @@ title: "Aufbau des Repositoriums"
 _extensions/easyqda-theme/   das Format: _extension.yml, easyqda.scss
                             (alle Regeln), easyqda-light/-dark.scss
                             (nur Paletten)
-fonts/                      Noto-Sans-woff2-Subsets + noto.css (SIL OFL 1.1)
+font/                       Noto-Sans-woff2-Subsets + noto.css (SIL OFL 1.1)
 offline/postprocess.py      die drei Offline-Reparaturen, laut bei Drift
 offline/smoketest.py        der Beweis im Headless-Browser
 offline/mathjax/            beigelegtes MathJax (Apache 2.0)
 print/                      der Ein-PDF-Bauer und die Noto-TTFs, die er einbettet
 script/gen_versions.py     pflegt versions.json aus der _extension.yml
-examples/minimal/           die Site, die die CI rendert und smoked
-examples/site-publish.yml   Vorlage für den Publish-Workflow einer Site
+example/minimal/            die Site, die die CI rendert und smoked
+example/site-publish.yml    Vorlage für den Publish-Workflow einer Site
 doc/                        diese Dokumentation (en/ + de/), gebaut mit
                             dem Theme selbst
 doc-root/                  Sprachwahl und Nackte-Adresse-Abkürzung,
@@ -34,12 +34,12 @@ existieren muss.
 
 Diese Dokumentation ist die Ausnahme, die das Layout bestätigt: Sie
 lebt *im* Theme-Repositorium, ihre `doc/build.sh` spiegelt
-`_extensions/` und `fonts/` also direkt von der Repositoriumswurzel —
+`_extensions/` und `font/` also direkt von der Repositoriumswurzel —
 die eine Kopie ganz ohne Vendoring-Schritt.
 
 ## Das Beispiel als Vertrag
 
-`examples/minimal/` ist bewusst winzig — eine `_quarto.yml` und eine
+`example/minimal/` ist bewusst winzig — eine `_quarto.yml` und eine
 Seite. Die CI rendert es bei jedem Push mit dem festgenagelten Quarto,
 wendet die Offline-Reparaturen an und lässt den Smoketest laufen. Was
 das Theme verspricht, soll dort beobachtbar sein; was bricht, soll

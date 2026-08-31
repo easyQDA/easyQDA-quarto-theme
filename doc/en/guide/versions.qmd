@@ -56,7 +56,7 @@ the release it shipped with.
 
 ## The deploy that fits this layout
 
-`examples/site-publish.yml` sketches the workflow; the qdaPy and qdaR
+`example/site-publish.yml` sketches the workflow; the qdaPy and qdaR
 repositories carry the full version in production (`docs.yml`: build,
 smoketest, then an SFTP mirror **into the version directory only**,
 with the host key pinned and a guard that refuses to operate on an

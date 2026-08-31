@@ -31,15 +31,15 @@ adaptive syntax-highlight pair (github / github-dark) with it.
 
 ## Self-hosted Noto Sans (optional)
 
-Copy `fonts/` into the site project and declare it:
+Copy `font/` into the site project and declare it:
 
 ```yaml
 project:
   resources:
-    - fonts/
+    - font/
 format:
   easyqda-theme-html:
-    css: fonts/noto.css
+    css: font/noto.css
 ```
 
 The woff2 subsets keep their `unicode-range`, so a page only loads the
@@ -71,7 +71,7 @@ reference. `QDA_SMOKE_BROWSER` overrides the browser autodetection.
 chapter order is the sidebar order and top-level sidebar sections
 become book parts (so the PDF cannot fall behind a page), the engine
 is Typst (bundled with Quarto — no TeX toolchain), Noto Sans is
-embedded from `print/fonts/`, the table of contents and the citations
+embedded from `print/font/`, the table of contents and the citations
 are linked, and one bibliography sits at the end. The cover's subtitle
 comes from the front matter of the language's `index.qmd`, and a
 project's `asset/` directory is copied into the book so its figures
@@ -101,7 +101,7 @@ page map plus the retargeting logic into each project as
 translations per page, so a third language is one more argument and
 one more directory.
 
-`examples/scaffold/` is the layout that grew out of the first big
+`example/scaffold/` is the layout that grew out of the first big
 bilingual site on this theme, fed back as a copyable starting point:
 one `asset/` tree mirrored into the language projects, all scripts
 vendored under `code/` (they find their resources in either layout,
@@ -116,9 +116,9 @@ Both the styling rules and the offline repairs are written against a
 concrete Quarto version (currently **1.10.18**, see the CI workflow).
 Pin it in your build, and treat upgrades as deliberate events: render,
 run the smoketest, look at one site, then move the pin. This
-repository's CI does exactly that with `examples/minimal/`;
-`examples/site-publish.yml` (GitHub Actions) and
-`examples/site-publish-gitlab.yml` (GitLab Pages, also self-hosted CE)
+repository's CI does exactly that with `example/minimal/`;
+`example/site-publish.yml` (GitHub Actions) and
+`example/site-publish-gitlab.yml` (GitLab Pages, also self-hosted CE)
 are templates for a documentation site's own publish workflow.
 
 ## Files
@@ -126,14 +126,14 @@ are templates for a documentation site's own publish workflow.
 - `_extensions/easyqda-theme/` — the format: `_extension.yml`,
   `easyqda.scss` (shared defaults and all rules), `easyqda-light.scss` /
   `easyqda-dark.scss` (palettes only)
-- `fonts/` — Noto Sans woff2 subsets + `noto.css` (SIL OFL 1.1)
+- `font/` — Noto Sans woff2 subsets + `noto.css` (SIL OFL 1.1)
 - `offline/postprocess.py` — the three offline repairs, loud on drift
 - `offline/smoketest.py` — the headless-browser proof
 - `offline/mathjax/` — vendored MathJax (Apache 2.0)
 - `print/` — the one-PDF builder and the Noto Sans TTFs it embeds
 - `script/gen_langmap.py` — the language switcher's page-to-page map
-- `examples/minimal/` — the site the CI renders and smokes
-- `examples/scaffold/` — a copyable project layout for a full
+- `example/minimal/` — the site the CI renders and smokes
+- `example/scaffold/` — a copyable project layout for a full
   bilingual site (build script, figure Makefile, root language switch)
 
 ## Maintenance notes
@@ -149,5 +149,5 @@ happens.
 ## Licence
 
 MIT (see `LICENSE`). Bundled: Noto Sans under the SIL Open Font
-License 1.1 (`fonts/OFL.txt`), MathJax under Apache 2.0
+License 1.1 (`font/OFL.txt`), MathJax under Apache 2.0
 (`offline/mathjax/LICENSE`).

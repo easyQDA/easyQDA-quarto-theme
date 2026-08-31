@@ -14,7 +14,7 @@ copies or substantial portions of the Software.
 
 Bundled third-party material keeps its own licence:
 
-  * fonts/           Noto Sans — SIL Open Font License 1.1 (fonts/OFL.txt)
+  * font/            Noto Sans — SIL Open Font License 1.1 (font/OFL.txt)
   * offline/mathjax/ MathJax   — Apache License 2.0 (offline/mathjax/LICENSE)
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR

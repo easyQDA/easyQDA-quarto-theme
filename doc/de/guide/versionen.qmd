@@ -56,7 +56,7 @@ Diese Kopie gehört zu dem Release, mit dem sie ausgeliefert wurde.
 
 ## Das passende Deploy
 
-`examples/site-publish.yml` skizziert den Workflow; die Repositorien
+`example/site-publish.yml` skizziert den Workflow; die Repositorien
 von qdaPy und qdaR führen die Vollversion im Produktivbetrieb
 (`docs.yml`: bauen, Smoketest, dann ein SFTP-Spiegel **nur in das
 Versionsverzeichnis**, mit festgenageltem Hostschlüssel und einer

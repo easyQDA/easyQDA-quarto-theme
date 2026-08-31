@@ -7,14 +7,14 @@ title: "Repository layout"
 _extensions/easyqda-theme/   the format: _extension.yml, easyqda.scss
                             (all rules), easyqda-light/-dark.scss
                             (palettes only)
-fonts/                      Noto Sans woff2 subsets + noto.css (SIL OFL 1.1)
+font/                       Noto Sans woff2 subsets + noto.css (SIL OFL 1.1)
 offline/postprocess.py      the three offline repairs, loud on drift
 offline/smoketest.py        the headless-browser proof
 offline/mathjax/            vendored MathJax (Apache 2.0)
 print/                      the one-PDF builder and the Noto TTFs it embeds
 script/gen_versions.py     maintains versions.json from _extension.yml
-examples/minimal/           the site the CI renders and smokes
-examples/site-publish.yml   template for a site's publish workflow
+example/minimal/            the site the CI renders and smokes
+example/site-publish.yml    template for a site's publish workflow
 doc/                        this documentation (en/ + de/), built with
                             the theme itself
 doc-root/                  the language chooser and the bare-address
@@ -34,12 +34,12 @@ existing.
 
 This documentation is the exception that proves the layout: it lives
 *inside* the theme repository, so its `doc/build.sh` mirrors
-`_extensions/` and `fonts/` straight from the repository root — the
+`_extensions/` and `font/` straight from the repository root — the
 one copy with no vendoring step at all.
 
 ## The example as a contract
 
-`examples/minimal/` is deliberately tiny — a `_quarto.yml` and one
+`example/minimal/` is deliberately tiny — a `_quarto.yml` and one
 page. The CI renders it with the pinned Quarto, applies the offline
 repairs and runs the smoketest on every push. Anything the theme
 promises should be observable there; anything that breaks should

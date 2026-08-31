@@ -12,7 +12,7 @@ quarto add easyqda/easyQDA-quarto-theme
 ```
 
 Or the way the zotQDA sites do it — **vendor the theme**: copy
-`_extensions/` (and whatever else you use: `fonts/`, `offline/`,
+`_extensions/` (and whatever else you use: `font/`, `offline/`,
 `print/`) into your repository. Your site then builds without any
 network access and without this repository existing, which is exactly
 the property the theme is about. A small `update-theme.sh` that
@@ -28,20 +28,20 @@ format:
 
 The format brings `toc`, `code-copy`, the light/dark theme pair and an
 adaptive syntax-highlight pair (github / github-dark) with it. A
-minimal working site lives in `examples/minimal/` — it is the site this
+minimal working site lives in `example/minimal/` — it is the site this
 repository's CI renders and smoke-tests on every push.
 
 ## Self-hosted Noto Sans (optional)
 
-Copy `fonts/` into the site project and declare it:
+Copy `font/` into the site project and declare it:
 
 ```yaml
 project:
   resources:
-    - fonts/
+    - font/
 format:
   easyqda-theme-html:
-    css: fonts/noto.css
+    css: font/noto.css
 ```
 
 The woff2 subsets keep their `unicode-range`, so a page only loads the

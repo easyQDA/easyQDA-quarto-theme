@@ -66,7 +66,7 @@ website:
 
 Anything page- or site-specific belongs in the site, not in the theme:
 Quarto merges `css:` and `theme:` additions from `_quarto.yml` on top
-of the format. The zotQDA sites add only `fonts/noto.css` this way.
+of the format. The zotQDA sites add only `font/noto.css` this way.
 
 One caution: the rules layer targets Quarto's HTML classes, and a few
 rules carry `!important` or raised specificity because Quarto's own

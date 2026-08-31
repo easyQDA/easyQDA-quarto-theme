@@ -4,7 +4,7 @@ project:
   type: website
   output-dir: ../../site/en
   resources:
-    - fonts/
+    - font/
 
 lang: en
 
@@ -76,5 +76,5 @@ website:
 
 format:
   easyqda-theme-html:
-    css: fonts/noto.css
+    css: font/noto.css
     include-after-body: theme/scripts.html
