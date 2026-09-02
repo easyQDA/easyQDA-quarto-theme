@@ -60,6 +60,12 @@ cover, empty when there is no copyright to print. A PDF read on screen
 needs neither, so a part or chapter starts on the next page, whichever
 it is, and the copyright page is dropped.
 
+**No stray list of figures.** The format sets a list of figures after
+the contents whether or not it was given a title for one, so a book with
+captioned figures ended its contents with a run of captions in a smaller
+type. Figures are kept out of every outline; their captions and numbers
+are untouched.
+
 One Quarto quirk is codified in the script rather than in your memory:
 the Typst book template requires an `author` and fails with a cryptic
 error without one. The script takes it as an optional third argument

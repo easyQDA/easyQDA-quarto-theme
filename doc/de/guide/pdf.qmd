@@ -63,6 +63,13 @@ zu drucken gibt. Ein PDF für den Bildschirm braucht beides nicht: Ein
 Teil oder Kapitel beginnt auf der nächsten Seite, welche es auch ist,
 und die Copyright-Seite entfällt.
 
+**Kein verirrtes Abbildungsverzeichnis.** Die Vorlage setzt nach dem
+Inhaltsverzeichnis ein Abbildungsverzeichnis, ob sie dafür einen Titel
+bekommen hat oder nicht; ein Buch mit beschrifteten Abbildungen endete
+sein Inhaltsverzeichnis daher mit einer Reihe von Bildunterschriften in
+kleinerer Schrift. Abbildungen bleiben aus jedem Verzeichnis heraus;
+ihre Unterschriften und Nummern bleiben, wie sie sind.
+
 Eine Quarto-Eigenheit steht im Skript statt in Ihrem Gedächtnis: Die
 Typst-Buchvorlage verlangt einen `author` und scheitert ohne ihn mit
 einer kryptischen Meldung. Das Skript nimmt ihn als optionales
