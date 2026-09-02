@@ -77,8 +77,14 @@ comes from the front matter of the language's `index.qmd`, and a
 project's `asset/` directory is copied into the book so its figures
 appear in the PDF too.
 
+Every page but the cover carries a footer under a rule, like the
+header's: the version and the build date on the left, the page number
+on the right, so a saved copy says which state of the documentation it
+is. The version comes from `--version` or `DOC_VERSION`, the date from
+`--date` or `DOC_DATE` (today, UTC, by default).
+
 ```sh
-python3 print/make_pdf.py mysite/en mysite/_site/docs.pdf "Jane Doe"
+python3 print/make_pdf.py mysite/en mysite/_site/docs.pdf "Jane Doe" --version 1.2.0
 ```
 
 Give the site a navbar icon pointing at the file

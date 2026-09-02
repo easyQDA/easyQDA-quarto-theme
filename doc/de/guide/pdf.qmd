@@ -35,6 +35,25 @@ entfernt und eine Bibliografie steht am Ende des Buches.
 **Noto Sans wird eingebettet**, aus `print/font/` — das PDF passt zur
 Site und sieht überall gleich aus.
 
+**Jede Seite sagt, welcher Stand sie ist.** Alle Seiten außer dem
+Umschlag tragen eine Fußzeile unter einer Linie, das Gegenstück zur
+Kopfzeile: links die Version und das Datum des Builds, rechts die
+Seitenzahl — ein gedrucktes oder gespeichertes Exemplar lässt sich so
+vom vorigen unterscheiden. Die Version übergeben Sie als `--version`
+(oder `DOC_VERSION` in der Umgebung), das Datum als `--date` (oder
+`DOC_DATE`), wenn es nicht das heutige sein soll; ohne Version druckt
+das Skript nur das Datum. In einem versionierten Deployment liefert
+`script/gen_versions.py --current` die Version.
+
+**Zwei Fehler der Buchvorlage sind behoben.** Quartos Typst-Buch legt
+das Inhaltsverzeichnis eines Teils über dessen Titel — beide werden
+auf der Teilseite platziert, und ein zweistufiges Verzeichnis wächst
+in die Überschrift hinein —, deshalb ist es auf Kapitel beschränkt.
+Und die Vorlage schließt einen Teil nie: Jedes Kapitel der obersten
+Ebene nach einem Teil wurde unter dessen Kapiteln geführt und unter
+dessen Kolumnentitel genannt. Das Skript beendet den Teil dort, wo er
+endet.
+
 Eine Quarto-Eigenheit steht im Skript statt in Ihrem Gedächtnis: Die
 Typst-Buchvorlage verlangt einen `author` und scheitert ohne ihn mit
 einer kryptischen Meldung. Das Skript nimmt ihn als optionales
@@ -59,8 +78,9 @@ und rufen Sie das Skript in Ihrem Build nach dem Site-Render auf,
 einmal je Sprache:
 
 ```sh
-python3 print/make_pdf.py doc/en site/en/docs.pdf
-python3 print/make_pdf.py doc/de site/de/Dokumentation.pdf
+VERSION="$(python3 script/gen_versions.py --current)"
+python3 print/make_pdf.py doc/en site/en/docs.pdf --version "$VERSION"
+python3 print/make_pdf.py doc/de site/de/Dokumentation.pdf --version "$VERSION"
 ```
 
 Das PDF wird mit der Site gebaut und ist damit immer derselbe Stand wie

@@ -36,6 +36,22 @@ end of the book.
 **Noto Sans is embedded** from `print/font/`, so the PDF matches the
 site and renders the same everywhere.
 
+**Every page says which state it is.** All pages but the cover carry a
+footer under a rule, the header's counterpart: the version and the
+build date on the left, the page number on the right, so a printed or
+saved copy can be told from the one before it. Pass the version as
+`--version` (or `DOC_VERSION` in the environment) and the date as
+`--date` (or `DOC_DATE`) when it should not be today's; with no
+version the script prints only the date. Under a versioned deployment,
+`script/gen_versions.py --current` supplies the version.
+
+**Two faults of the book format are put right.** Quarto's Typst book
+lays a part's contents over its title — both are placed on the part
+page, and a two-level outline grows up into the heading — so the
+outline is cut to chapters. And the format never closes a part: every
+top-level chapter after one was listed among its chapters and named
+under its running header. The script ends the part where it ends.
+
 One Quarto quirk is codified in the script rather than in your memory:
 the Typst book template requires an `author` and fails with a cryptic
 error without one. The script takes it as an optional third argument
@@ -59,8 +75,9 @@ and call the script from your build after the site render, once per
 language:
 
 ```sh
-python3 print/make_pdf.py doc/en site/en/docs.pdf
-python3 print/make_pdf.py doc/de site/de/Dokumentation.pdf
+VERSION="$(python3 script/gen_versions.py --current)"
+python3 print/make_pdf.py doc/en site/en/docs.pdf --version "$VERSION"
+python3 print/make_pdf.py doc/de site/de/Dokumentation.pdf --version "$VERSION"
 ```
 
 The PDF is rebuilt with the site, so it is always the same release as
