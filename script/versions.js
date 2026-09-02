@@ -16,8 +16,13 @@
    it does nothing at all - which is correct: that copy belongs to the release
    it shipped with.
 
-   versions.json is written by scripts/gen_versions.py and lives at the site
-   root, one directory above the version directories. */
+   versions.json is written by script/gen_versions.py and lives at the site
+   root, one directory above the version directories.
+
+   It sits beside gen_langmap.py because that is what puts it on the page:
+   pass it as --extra-js and it is inlined into theme/scripts.html. A site
+   that vendors the theme gets both, so the banner is the template's rather
+   than something each site has to keep its own copy of. */
 (function () {
   var LEGAL = /(impressum|privacy|datenschutz)\.html$/;
 

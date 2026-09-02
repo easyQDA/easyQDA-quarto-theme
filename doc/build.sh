@@ -48,7 +48,7 @@ done
 # fresh start deleted pages would linger in the published site.
 for lang in $LANGS; do rm -rf "../site/$lang"; done
 
-"$GEN_PY" ../script/gen_langmap.py --extra-js shared/versions.js $LANGS
+"$GEN_PY" ../script/gen_langmap.py --extra-js ../script/versions.js $LANGS
 for lang in $LANGS; do quarto render "$lang"; done
 python3 ../offline/postprocess.py ../site/en ../site/de
 

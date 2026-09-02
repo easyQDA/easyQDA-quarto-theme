@@ -101,6 +101,21 @@ page map plus the retargeting logic into each project as
 translations per page, so a third language is one more argument and
 one more directory.
 
+## Versioned publishing
+
+`script/versions.js` is the banner that says which version a reader is
+looking at, with a menu to the same page in any other one and a warning
+when the version is not the current release. Pass it to the generator
+above — `gen_langmap.py --extra-js ../script/versions.js en de` — and it
+is inlined into the same `theme/scripts.html`. It needs `versions.json`
+at the site root, one directory above the version directories, which
+`script/gen_versions.py` writes from the project's own manifest.
+
+Everything it does is conditional on the address carrying a version
+segment, so in a plain file tree and in help bundled inside an
+application it does nothing at all — which is correct: that copy belongs
+to the release it shipped with.
+
 `example/scaffold/` is the layout that grew out of the first big
 bilingual site on this theme, fed back as a copyable starting point:
 one `asset/` tree mirrored into the language projects, all scripts
@@ -132,6 +147,8 @@ are templates for a documentation site's own publish workflow.
 - `offline/mathjax/` — vendored MathJax (Apache 2.0)
 - `print/` — the one-PDF builder and the Noto Sans TTFs it embeds
 - `script/gen_langmap.py` — the language switcher's page-to-page map
+- `script/versions.js` — the version banner and switcher, inlined by
+  `gen_langmap.py --extra-js`; needs `versions.json` at the site root
 - `example/minimal/` — the site the CI renders and smokes
 - `example/scaffold/` — a copyable project layout for a full
   bilingual site (build script, figure Makefile, root language switch)
