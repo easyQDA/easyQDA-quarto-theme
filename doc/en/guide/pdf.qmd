@@ -53,6 +53,13 @@ outline is cut to chapters. And the format never closes a part: every
 top-level chapter after one was listed among its chapters and named
 under its running header. The script ends the part where it ends.
 
+**No blank pages.** The format opens every part and chapter on a
+right-hand page, the convention of double-sided print, and pads with
+blank pages to get there; it also sets a copyright page after the
+cover, empty when there is no copyright to print. A PDF read on screen
+needs neither, so a part or chapter starts on the next page, whichever
+it is, and the copyright page is dropped.
+
 One Quarto quirk is codified in the script rather than in your memory:
 the Typst book template requires an `author` and fails with a cryptic
 error without one. The script takes it as an optional third argument

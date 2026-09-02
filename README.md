@@ -81,7 +81,12 @@ Every page but the cover carries a footer set like the running header
 and ruled off the same way: the version on the left, the build date on
 the right, so a saved copy says which state of the documentation it
 is. The version comes from `--version` or `DOC_VERSION`, the date from
-`--date` or `DOC_DATE` (today, UTC, by default).
+`--date` or `DOC_DATE` (today, UTC, by default). Three habits of the
+book format are put right on the way: the part page no longer lays the
+part's contents over its title, a part ends where it ends instead of
+swallowing the chapters after it, and there are no blank pages — none
+before a chapter to reach a right-hand page, none after the cover for
+a copyright that is not there.
 
 ```sh
 python3 print/make_pdf.py mysite/en mysite/_site/docs.pdf "Jane Doe" --version 1.2.0

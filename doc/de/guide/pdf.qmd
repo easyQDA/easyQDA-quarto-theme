@@ -55,6 +55,14 @@ Ebene nach einem Teil wurde unter dessen Kapiteln geführt und unter
 dessen Kolumnentitel genannt. Das Skript beendet den Teil dort, wo er
 endet.
 
+**Keine Leerseiten.** Die Vorlage beginnt jeden Teil und jedes Kapitel
+auf einer rechten Seite, der Konvention des beidseitigen Drucks, und
+füllt mit Leerseiten auf, um dorthin zu kommen; außerdem setzt sie
+nach dem Umschlag eine Copyright-Seite, leer, wenn es kein Copyright
+zu drucken gibt. Ein PDF für den Bildschirm braucht beides nicht: Ein
+Teil oder Kapitel beginnt auf der nächsten Seite, welche es auch ist,
+und die Copyright-Seite entfällt.
+
 Eine Quarto-Eigenheit steht im Skript statt in Ihrem Gedächtnis: Die
 Typst-Buchvorlage verlangt einen `author` und scheitert ohne ihn mit
 einer kryptischen Meldung. Das Skript nimmt ihn als optionales
