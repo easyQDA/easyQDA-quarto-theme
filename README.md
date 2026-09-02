@@ -77,9 +77,9 @@ comes from the front matter of the language's `index.qmd`, and a
 project's `asset/` directory is copied into the book so its figures
 appear in the PDF too.
 
-Every page but the cover carries a footer under a rule, like the
-header's: the version and the build date on the left, the page number
-on the right, so a saved copy says which state of the documentation it
+Every page but the cover carries a footer set like the running header
+and ruled off the same way: the version on the left, the build date on
+the right, so a saved copy says which state of the documentation it
 is. The version comes from `--version` or `DOC_VERSION`, the date from
 `--date` or `DOC_DATE` (today, UTC, by default).
 

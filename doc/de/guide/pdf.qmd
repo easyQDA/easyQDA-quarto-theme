@@ -36,14 +36,15 @@ entfernt und eine Bibliografie steht am Ende des Buches.
 Site und sieht überall gleich aus.
 
 **Jede Seite sagt, welcher Stand sie ist.** Alle Seiten außer dem
-Umschlag tragen eine Fußzeile unter einer Linie, das Gegenstück zur
-Kopfzeile: links die Version und das Datum des Builds, rechts die
-Seitenzahl — ein gedrucktes oder gespeichertes Exemplar lässt sich so
-vom vorigen unterscheiden. Die Version übergeben Sie als `--version`
-(oder `DOC_VERSION` in der Umgebung), das Datum als `--date` (oder
-`DOC_DATE`), wenn es nicht das heutige sein soll; ohne Version druckt
-das Skript nur das Datum. In einem versionierten Deployment liefert
-`script/gen_versions.py --current` die Version.
+Umschlag tragen eine Fußzeile, gesetzt wie der Kolumnentitel und
+ebenso mit einer Linie abgesetzt: links die Version, rechts das Datum
+des Builds — ein gedrucktes oder gespeichertes Exemplar lässt sich so
+vom vorigen unterscheiden. Die Seitenzahl bleibt in der Kopfzeile. Die
+Version übergeben Sie als `--version` (oder `DOC_VERSION` in der
+Umgebung), das Datum als `--date` (oder `DOC_DATE`), wenn es nicht das
+heutige sein soll; ohne Version nennt die linke Seite nur die Site. In
+einem versionierten Deployment liefert `script/gen_versions.py
+--current` die Version.
 
 **Zwei Fehler der Buchvorlage sind behoben.** Quartos Typst-Buch legt
 das Inhaltsverzeichnis eines Teils über dessen Titel — beide werden

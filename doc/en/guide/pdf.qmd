@@ -37,13 +37,14 @@ end of the book.
 site and renders the same everywhere.
 
 **Every page says which state it is.** All pages but the cover carry a
-footer under a rule, the header's counterpart: the version and the
-build date on the left, the page number on the right, so a printed or
-saved copy can be told from the one before it. Pass the version as
-`--version` (or `DOC_VERSION` in the environment) and the date as
-`--date` (or `DOC_DATE`) when it should not be today's; with no
-version the script prints only the date. Under a versioned deployment,
-`script/gen_versions.py --current` supplies the version.
+footer set like the running header and ruled off the same way: the
+version on the left, the build date on the right, so a printed or
+saved copy can be told from the one before it. The page number stays
+in the header. Pass the version as `--version` (or `DOC_VERSION` in
+the environment) and the date as `--date` (or `DOC_DATE`) when it
+should not be today's; with no version the left side names only the
+site. Under a versioned deployment, `script/gen_versions.py --current`
+supplies the version.
 
 **Two faults of the book format are put right.** Quarto's Typst book
 lays a part's contents over its title — both are placed on the part
